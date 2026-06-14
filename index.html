@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -597,7 +597,7 @@ async function trySyncLoad() {
     );
     if (!resp.ok) throw new Error();
     const d = await resp.json();
-    const remote = JSON.parse(atob(d.content));
+    const remote = JSON.parse(decodeURIComponent(escape(atob(d.content))));
     window.__dataSHA = d.sha;
     const localRaw = localStorage.getItem(STORAGE_KEY);
     const local = localRaw ? JSON.parse(localRaw) : null;
@@ -632,7 +632,7 @@ function syncToServer() {
     try {
       const h = ghHeaders();
       if (!h) return;
-      const body = { message: 'sync', content: btoa(JSON.stringify(data)), branch: GH_BRANCH };
+      const body = { message: 'sync', content: btoa(unescape(encodeURIComponent(JSON.stringify(data)))), branch: GH_BRANCH };
       if (window.__dataSHA) body.sha = window.__dataSHA;
       const resp = await fetch(
         'https://api.github.com/repos/' + GH_OWNER + '/' + GH_REPO + '/contents/data.json',
