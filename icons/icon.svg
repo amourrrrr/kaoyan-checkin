@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5b8c5a"/>
+      <stop offset="100%" stop-color="#3d5a4a"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="100" fill="url(#bg)"/>
+  <!-- Book -->
+  <g transform="translate(96,100)">
+    <path d="M40 60 Q40 40 60 40 L280 40 Q300 40 300 60 L300 340 Q300 360 280 360 L60 360 Q40 360 40 340 Z" fill="rgba(255,255,255,0.2)" stroke="none"/>
+    <path d="M60 60 L280 60 L280 340 L60 340 Z" fill="rgba(255,255,255,0.2)"/>
+    <line x1="120" y1="60" x2="120" y2="340" stroke="rgba(255,255,255,0.4)" stroke-width="4"/>
+    <!-- Left page lines -->
+    <line x1="145" y1="100" x2="270" y2="100" stroke="white" stroke-width="8" stroke-linecap="round"/>
+    <line x1="145" y1="140" x2="270" y2="140" stroke="white" stroke-width="8" stroke-linecap="round"/>
+    <line x1="145" y1="180" x2="230" y2="180" stroke="white" stroke-width="8" stroke-linecap="round"/>
+    <!-- Checkmark -->
+    <circle cx="210" cy="270" r="40" fill="none" stroke="white" stroke-width="10"/>
+    <path d="M190 270 L205 285 L230 255" fill="none" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
