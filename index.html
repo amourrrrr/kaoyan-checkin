@@ -558,7 +558,7 @@ function loadData() {
     if (!d.habits) d.habits = [];
     if (!d.records) d.records = {};
     return d;
-  } catch { return { habits: [], records: {} }; }
+  } catch(e) { return { habits: [], records: {} }; }
 }
 
 function saveData(data) {
@@ -1031,7 +1031,8 @@ document.querySelectorAll('.tab').forEach(tab => {
 
 // -------- Init --------
 (async function init() {
-  await trySyncLoad();
+  try { await trySyncLoad(); }
+  catch(e) { document.getElementById("app").innerHTML += "<div style=background:red;color:white;padding:12px;margin-top:50px;text-align:center>Error: " + e.message + "</div>"; }
   renderAll();
 })();
 </script>
