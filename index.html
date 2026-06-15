@@ -110,7 +110,7 @@ if(t==0){$('pt').innerHTML='添加你的习惯吧';$('pd').innerHTML='点击下�
 else if(dc==t){$('pt').innerHTML='全部完成！';$('pd').innerHTML='太棒了！'}
 else{$('pt').innerHTML='今日 '+dc+'/'+t;$('pd').innerHTML=dc?'还差 '+(t-dc):'开始吧'}
 var sk=sr(D.r,h);$('sk').innerHTML=sk>0?'🔥'+sk+'天':'开始吧'
-var l=$('hl');if(h.length==0){l.innerHTML='<div class=em>还没有习惯，点击下方添加</div>';return}
+var l=$('hl');if(h.length==0){l.innerHTML='<div class=em>点击下方添加你的第一个习惯</div>';return}
 var hh='',tk2=tK()
 for(var i=0;i<h.length;i++){
 var x=h[i],ch=!!((D.r[tk2]||{})[x.id]),hs=0
@@ -123,7 +123,7 @@ l.querySelectorAll('.h').forEach(function(c){c.onchange=function(){var id=this.i
 l.querySelectorAll('.dl').forEach(function(b){b.onclick=function(){if(!confirm('确定？'))return;var id=this.parentNode.querySelector('.h').id.replace('z','');D.h=D.h.filter(function(x){return x.id!=id});for(var k in D.r){delete D.r[k][id];if(!Object.keys(D.r[k]).length)delete D.r[k]}sv(D);ra()}})
 }catch(e){errorBar('r0:'+e.message)}}
 // ===== 渲染周月年 =====
-function r1(){try{var da=[];for(var i=6;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);da.push(d)}var t=D.h.length,w=$('wg');if(t==0){w.innerHTML='<div class=em>添加习惯后显示</div>';return}var m='';for(var i=0;i<da.length;i++){var d=da[i],k=dK(d),dc=ct(D.r,D.h,k),rt=dc/t,isT=k==tK();m+='<div class=wd'+(isT?' today':'')+'><div class=wn>'+W[d.getDay()]+'</div><div class=wd2>'+(d.getMonth()+1)+'/'+d.getDate()+'</div><div class=wb><div class=wf style=width:'+(rt*100)+'%></div></div><div class=wc>'+dc+'/'+t+'</div></div>'}w.innerHTML=m}catch(e){errorBar('r1:'+e.message)}}
+function r1(){try{var da=[];for(var i=6;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);da.push(d)}var t=D.h.length,w=$('wg');if(t==0){w.innerHTML='<div class=em>点击下方添加习惯</div>';return}var m='';for(var i=0;i<da.length;i++){var d=da[i],k=dK(d),dc=ct(D.r,D.h,k),rt=dc/t,isT=k==tK();m+='<div class=wd'+(isT?' today':'')+'><div class=wn>'+W[d.getDay()]+'</div><div class=wd2>'+(d.getMonth()+1)+'/'+d.getDate()+'</div><div class=wb><div class=wf style=width:'+(rt*100)+'%></div></div><div class=wc>'+dc+'/'+t+'</div></div>'}w.innerHTML=m}catch(e){errorBar('r1:'+e.message)}}
 function r2(){try{var n=new Date(),t=new Date(n.getFullYear(),n.getMonth()+mo,1),y=t.getFullYear(),m=t.getMonth();$('mt').innerHTML=y+'年'+(m+1)+'月';var f=new Date(y,m,1).getDay(),d=new Date(y,m+1,0).getDate(),tl=D.h.length;var hh='';for(var i=0;i<f;i++)hh+='<div class=cd></div>';for(var i=1;i<=d;i++){var k=y+'-'+String(m+1).padStart(2,'0')+'-'+String(i).padStart(2,'0');hh+='<div class=cd style=background:'+(ct(D.r,D.h,k)>0?'#5b8c5a':'')+'>'+(ct(D.r,D.h,k)>0?'✓':'')+'</div>'}$('cg').innerHTML=hh}catch(e){errorBar('r2:'+e.message)}}
 function r3(){try{var y=new Date().getFullYear()+yo;$('yt').innerHTML=y+'年';$('hml').innerHTML=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'].map(function(m,i){return'<span style=grid-column:'+(Math.floor(i*53/12)+1)+'>'+m+'</span>'}).join('');var st=new Date(y,0,1),en=new Date(y,11,31),td2=Math.ceil((en-st)/86400000)+1,sw=st.getDay(),th=D.h.length;var c='',cd=0,tc=0,pd=0,bs=0,cs=0;for(var i=0;i<sw;i++)c+='<div class=hc style=background:transparent></div>';for(var d=0;d<td2;d++){var d2=new Date(st);d2.setDate(d2.getDate()+d);var k=dK(d2),dc=ct(D.r,D.h,k);tc+=dc;var lv=0;if(th>0){if(dc==th)lv=4;else if(dc/th>=.75)lv=3;else if(dc/th>=.5)lv=2;else if(dc>0)lv=1}if(dc>0)cd++;if(th>0&&dc==th){pd++;cs++;if(cs>bs)bs=cs}else cs=0;c+='<div class=hc l'+lv+'></div>'}
 $('hm').innerHTML=c;$('hs').innerHTML='📅'+cd+'天 ✅'+tc+'项 🎯'+pd+'天 🏆'+bs+'天'}catch(e){errorBar('r3:'+e.message)}}
@@ -147,7 +147,7 @@ $('ap').onkeydown=function(e){if(e.keyCode==13)hA()}
 $('ov').onclick=function(e){if(e.target==this)this.className='ov'}
 // ===== 渲染 =====
 function ra(){r0();r1();r2();r3()}
-function go(u){U=u;D=ld();$('ld').style.display='none';$('av').style.display='block';$('ud').innerHTML='👤 '+u;ra()}
+function et(){var n=prompt("标题：",localStorage.getItem("kt")||"习惯打卡");if(n&&n.trim()){localStorage.setItem("kt",n.trim());$("at").innerHTML="📚 "+n.trim()}};var lt=localStorage.getItem("kt");if(lt)$("at").innerHTML="📚 "+lt;function go(u){U=u;D=ld();$('ld').style.display='none';$('av').style.display='block';$('ud').innerHTML='👤 '+u;ra()}
 function lO(){localStorage.removeItem('ks');U=null;D=null;$('av').style.display='none';$('ld').style.display='flex'}
 // ===== 初始化 =====
 try{var s=JSON.parse(localStorage.getItem('ks')||'null');if(s&&s.u)go(s.u)}catch(e){}
