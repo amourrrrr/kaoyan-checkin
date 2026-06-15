@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Simple Test</title></head><body>
+<h1>Test Page</h1>
+<button id="btn" style="padding:15px;font-size:18px">Click Me!</button>
+<p id="out" style="margin-top:15px;font-size:16px">Waiting...</p>
+<script>
+document.getElementById("btn").onclick = function() {
+  document.getElementById("out").textContent = "CLICKED! JS is working!";
+};
+</script></body></html>
