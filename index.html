@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>考研打卡</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
@@ -13,24 +14,19 @@
   .dt{text-align:center;font-size:.85rem;color:var(--y);margin-bottom:12px}
   .rw{display:flex;align-items:center;gap:16px;background:var(--card);border-radius:12px;padding:16px 20px;margin-bottom:16px}
   .ri{width:64px;height:64px;position:relative;flex-shrink:0}
-  .ri svg{transform:rotate(-90deg)}
-  .ri .b{fill:none;stroke:#ddd;stroke-width:6}
-  .ri .f{fill:none;stroke:var(--g);stroke-width:6;stroke-linecap:round;transition:.4s}
+  .ri svg{transform:rotate(-90deg)}.ri .b{fill:none;stroke:#ddd;stroke-width:6}.ri .f{fill:none;stroke:var(--g);stroke-width:6;stroke-linecap:round;transition:.4s}
   .ri .n{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:var(--d)}
-  .rf{flex:1}
-  .rf h2{font-size:.95rem;font-weight:600}
-  .rf p{font-size:.82rem;color:var(--y);margin-top:2px}
+  .rf{flex:1}.rf h2{font-size:.95rem;font-weight:600}.rf p{font-size:.82rem;color:var(--y);margin-top:2px}
   .sk{display:inline-block;margin-top:6px;font-size:.78rem;color:var(--g);background:#e8f0ea;padding:2px 10px;border-radius:20px}
   .ts{display:flex;gap:4px;background:var(--card);padding:4px;border-radius:12px;margin-bottom:16px}
   .ts button{flex:1;padding:8px;text-align:center;font-size:.85rem;border:none;background:transparent;color:var(--y);cursor:pointer;border-radius:8px}
   .ts .a{background:var(--g);color:#fff;font-weight:600}
-  .pn{display:none}
-  .pn.s{display:block}
+  .pn{display:none}.pn.s{display:block}
   .ls{display:flex;flex-direction:column;gap:8px}
   .it{display:flex;align-items:center;gap:10px;background:var(--card);padding:10px 14px;border-radius:12px}
-  .it .c{display:none}
-  .it .bx{width:22px;height:22px;border:2px solid #ddd;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.8rem;color:transparent;transition:.15s}
-  .it .c:checked+.bx{background:var(--g);border-color:var(--g);color:#fff}
+  .it .h{display:none}
+  .it .x{width:22px;height:22px;border:2px solid #ddd;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.8rem;color:transparent;transition:.15s}
+  .it .h:checked+.x{background:var(--g);border-color:var(--g);color:#fff}
   .it .nm{flex:1;font-size:.92rem;font-weight:500;cursor:pointer}
   .it .dl{width:26px;height:26px;border:none;background:transparent;color:#ccc;cursor:pointer;border-radius:6px;font-size:1rem}
   .it .dl:hover{background:#fbe9e9;color:#d97a7a}
@@ -39,24 +35,18 @@
   .ad input:focus{border-color:var(--g)}
   .ad button{padding:10px 16px;border:none;background:var(--g);color:#fff;border-radius:12px;font-size:.9rem;font-weight:600;cursor:pointer}
   .ad button:hover{background:var(--d)}
-  .em{text-align:center;padding:40px 20px;color:var(--y);font-size:.9rem}
-  .em .be{font-size:2.5rem;margin-bottom:8px}
-  .wg{display:flex;gap:6px}
-  .wdi{flex:1;background:var(--card);border-radius:10px;padding:8px 4px;text-align:center}
-  .wdi .wn{font-size:.68rem;color:var(--y)}
-  .wdi .wd2{font-size:.72rem;font-weight:600;margin:2px 0 4px}
-  .wdi .wb{height:4px;border-radius:4px;background:#ddd;overflow:hidden}
-  .wdi .wf{height:100%;border-radius:4px;background:var(--g);transition:.3s}
-  .wdi .wc{font-size:.7rem;color:var(--y)}
-  .wdi.t{background:#e8f0ea}
+  .em{text-align:center;padding:40px 20px;color:var(--y);font-size:.9rem}.em .be{font-size:2.5rem;margin-bottom:8px}
+  .wg{display:flex;gap:6px}.wdi{flex:1;background:var(--card);border-radius:10px;padding:8px 4px;text-align:center}
+  .wdi .wn{font-size:.68rem;color:var(--y)}.wdi .wd2{font-size:.72rem;font-weight:600;margin:2px 0 4px}
+  .wdi .wb{height:4px;border-radius:4px;background:#ddd;overflow:hidden}.wdi .wf{height:100%;border-radius:4px;background:var(--g);transition:.3s}
+  .wdi .wc{font-size:.7rem;color:var(--y)}.wdi.t{background:#e8f0ea}
   .mh{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
   .mh button{border:none;background:var(--card);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem}
   .mh span{font-size:.95rem;font-weight:600}
   .ca{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
   .cl{text-align:center;font-size:.68rem;color:var(--y);padding:4px 0}
   .cd{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:6px;font-size:.78rem;background:var(--card);gap:2px}
-  .cd.t{border:2px solid var(--g);font-weight:700}
-  .cd .cc{font-size:.55rem;color:var(--y)}
+  .cd.t{border:2px solid var(--g);font-weight:700}.cd .cc{font-size:.55rem;color:var(--y)}
   .yh{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
   .yh button{border:none;background:var(--card);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem}
   .yh span{font-size:.95rem;font-weight:600}
@@ -64,407 +54,42 @@
   .hc{aspect-ratio:1;border-radius:2px;background:#ddd;min-width:5px}
   .hc.l1{background:#cfe3d4}.hc.l2{background:#9ec9a8}.hc.l3{background:#5b8c5a}.hc.l4{background:#2d5a3a}
   .hml{display:grid;grid-template-columns:repeat(12,1fr);font-size:.55rem;color:var(--y);margin-bottom:3px}
-  .hms{display:flex;gap:12px;margin:8px 0 2px;font-size:.78rem;color:var(--y);flex-wrap:wrap}
-  .hms strong{color:var(--t)}
+  .hms{display:flex;gap:12px;margin:8px 0 2px;font-size:.78rem;color:var(--y);flex-wrap:wrap}.hms strong{color:var(--t)}
   .hlg{display:flex;align-items:center;gap:3px;font-size:.65rem;color:var(--y);justify-content:flex-end;margin-top:4px}
   .hlg .s{width:10px;height:10px;border-radius:2px;background:#ddd}
   .hlg .s.l1{background:#cfe3d4}.hlg .s.l2{background:#9ec9a8}.hlg .s.l3{background:#5b8c5a}.hlg .s.l4{background:#2d5a3a}
-</style>
-</head>
-<body>
-<div class="ap">
+</style></head><body><div class="ap">
 <h1>📚 考研打卡</h1>
 <div class="dt" id="dt"></div>
-
-<div class="rw">
-  <div class="ri">
-    <svg width="64" height="64" viewBox="0 0 64 64">
-      <circle class="b" cx="32" cy="32" r="26"/>
-      <circle class="f" id="rg" cx="32" cy="32" r="26" stroke-dasharray="0 163.36"/>
-    </svg>
-    <div class="n" id="ct">0/0</div>
-  </div>
-  <div class="rf">
-    <h2 id="tt">今天还没打卡</h2>
-    <p id="de">添加习惯，开始坚持</p>
-    <div class="sk" id="sk">🔥 连续 0 天</div>
-  </div>
-</div>
-
-<div class="ts">
-  <button class="a" id="t0">今日</button>
-  <button id="t1">本周</button>
-  <button id="t2">本月</button>
-  <button id="t3">今年</button>
-</div>
-
-<div class="pn s" id="p0">
-  <div class="ls" id="ls"></div>
-  <div class="ad">
-    <input id="in" placeholder="添加习惯，如 背单词" maxlength="30">
-    <button id="ab">＋ 添加</button>
-  </div>
-</div>
-
+<div class="rw"><div class="ri"><svg width="64" height="64" viewBox="0 0 64 64"><circle class="b" cx="32" cy="32" r="26"/><circle class="f" id="rg" cx="32" cy="32" r="26" stroke-dasharray="0 163.36"/></svg><div class="n" id="ct">0/0</div></div><div class="rf"><h2 id="tt">今天还没打卡</h2><p id="de">添加习惯，开始坚持</p><div class="sk" id="sk">🔥 连续 0 天</div></div></div>
+<div class="ts"><button class="a" id="t0">今日</button><button id="t1">本周</button><button id="t2">本月</button><button id="t3">今年</button></div>
+<div class="pn s" id="p0"><div class="ls" id="ls"></div><div class="ad"><input id="in" placeholder="添加习惯，如 背单词" maxlength="30"><button id="ab">＋ 添加</button></div></div>
 <div class="pn" id="p1"><div class="wg" id="wg"></div></div>
-
-<div class="pn" id="p2">
-  <div class="mh"><button id="mp">‹</button><span id="mt"></span><button id="mn">›</button></div>
-  <div class="ca" id="ca"></div>
+<div class="pn" id="p2"><div class="mh"><button id="mp">‹</button><span id="mt"></span><button id="mn">›</button></div><div class="ca" id="ca"></div></div>
+<div class="pn" id="p3"><div class="yh"><button id="yp">‹</button><span id="yt"></span><button id="yn">›</button></div><div class="hml" id="hml"></div><div class="hgr" id="hgr"></div><div class="hms" id="hms"></div><div class="hlg">少 <span class="s"></span><span class="s l1"></span><span class="s l2"></span><span class="s l3"></span><span class="s l4"></span> 多</div></div>
 </div>
-
-<div class="pn" id="p3">
-  <div class="yh"><button id="yp">‹</button><span id="yt"></span><button id="yn">›</button></div>
-  <div class="hml" id="hml"></div>
-  <div class="hgr" id="hgr"></div>
-  <div class="hms" id="hms"></div>
-  <div class="hlg">少 <span class="s"></span><span class="s l1"></span><span class="s l2"></span><span class="s l3"></span><span class="s l4"></span> 多</div>
-</div>
-</div>
-
 <script>
-// ========== 考研打卡 - 纯本地版本 ==========
-
-var STORAGE_KEY = "kc_data";
-var WEEKDAY = ["日","一","二","三","四","五","六"];
-var g_data = null;
-var g_monthOffset = 0;
-var g_yearOffset = 0;
-
-// ---- Utility ----
-function pad(n) { return (n + "").padStart(2, "0"); }
-function todayKey() {
-  var d = new Date();
-  return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
-}
-function dateKey(d) {
-  return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
-}
-function byId(id) { return document.getElementById(id); }
-
-// ---- LocalStorage ----
-function loadData() {
-  try {
-    var raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { habits: [], records: {} };
-    var d = JSON.parse(raw);
-    if (!d.habits) d.habits = [];
-    if (!d.records) d.records = {};
-    return d;
-  } catch(e) {
-    return { habits: [], records: {} };
-  }
-}
-function saveData(d) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(d));
-  } catch(e) {}
-}
-
-// ---- Calculations ----
-function countDone(records, habits, key) {
-  var day = records[key] || {};
-  var c = 0;
-  for (var i = 0; i < habits.length; i++) {
-    if (day[habits[i].id]) c++;
-  }
-  return c;
-}
-function calcStreak(records, habits) {
-  if (habits.length === 0) return 0;
-  var tk = todayKey();
-  if (countDone(records, habits, tk) < habits.length) return 0;
-  var s = 1;
-  for (var i = 1; i < 366; i++) {
-    var p = new Date();
-    p.setDate(p.getDate() - i);
-    if (countDone(records, habits, dateKey(p)) === habits.length) {
-      s++;
-    } else {
-      break;
-    }
-  }
-  return s;
-}
-function pickEmoji(name) {
-  name = name || "";
-  if (name.indexOf("数") >= 0 || name.indexOf("高") >= 0) return "📐";
-  if (name.indexOf("英") >= 0 || name.indexOf("单") >= 0) return "📝";
-  if (name.indexOf("政") >= 0) return "🏛";
-  if (name.indexOf("专") >= 0 || name.indexOf("据") >= 0) return "⚙";
-  if (name.indexOf("代") >= 0 || name.indexOf("编") >= 0) return "💻";
-  if (name.indexOf("阅") >= 0 || name.indexOf("读") >= 0) return "📚";
-  if (name.indexOf("真") >= 0) return "📋";
-  return "📖";
-}
-
-// ---- Render Today ----
-function renderToday() {
-  var d = new Date();
-  var habits = g_data.habits;
-  var tk = todayKey();
-  var total = habits.length;
-  var done = countDone(g_data.records, g_data.habits, tk);
-  var circ = 2 * Math.PI * 26;
-
-  // Date display
-  byId("dt").textContent = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日 星期" + WEEKDAY[d.getDay()];
-
-  // Ring
-  byId("rg").setAttribute("stroke-dasharray", (total > 0 ? done / total * circ : 0) + " " + circ);
-  byId("ct").textContent = done + "/" + total;
-
-  // Progress text
-  if (total === 0) {
-    byId("tt").textContent = "添加你的考研习惯吧 ✨";
-    byId("de").textContent = "点击下方添加";
-  } else if (done === total) {
-    byId("tt").textContent = "🎉 今日全部完成！";
-    byId("de").textContent = "太棒了，坚持就是胜利！";
-  } else {
-    byId("tt").textContent = "今日完成 " + done + "/" + total;
-    byId("de").textContent = done === 0 ? "开始今天的打卡吧 💪" : "还差 " + (total - done) + " 项，加油！";
-  }
-
-  // Streak
-  var s = calcStreak(g_data.records, g_data.habits);
-  byId("sk").textContent = s > 0 ? "🔥 连续 " + s + " 天" : "💪 今天就开始坚持吧";
-
-  // Habit list
-  var ls = byId("ls");
-  if (habits.length === 0) {
-    ls.innerHTML = "<div class=em><div class=be>📝</div><p>还没有习惯，添加一个开始打卡吧</p></div>";
-    return;
-  }
-
-  var html = "";
-  for (var i = 0; i < habits.length; i++) {
-    var h = habits[i];
-    var checked = !!((g_data.records[tk] || {})[h.id]);
-    var hs = 0;
-    for (var j = 0; j < 366; j++) {
-      var cc = new Date();
-      cc.setDate(cc.getDate() - j);
-      if ((g_data.records[dateKey(cc)] || {})[h.id]) {
-        hs++;
-      } else {
-        break;
-      }
-    }
-    var badge = "";
-    if (hs > 1) {
-      badge = "<span style='font-size:.72rem;color:var(--g);background:#e8f0ea;padding:0 8px;border-radius:10px'>🔥" + hs + "天</span>";
-    } else if (hs === 1) {
-      badge = "<span style='font-size:.72rem;color:var(--g);background:#e8f0ea;padding:0 8px;border-radius:10px'>新打卡</span>";
-    }
-    html += "<div class='it'>"
-      + "<input class='c' type='checkbox' id='cb" + h.id + "'" + (checked ? " checked" : "") + ">"
-      + "<label class='bx' for='cb" + h.id + "'>" + (checked ? "✓" : "") + "</label>"
-      + "<label class='nm' for='cb" + h.id + "'>" + (h.emoji || "📖") + " " + h.name + " " + badge + "</label>"
-      + "<button class='dl' data-id='" + h.id + "'>✕</button>"
-      + "</div>";
-  }
-  ls.innerHTML = html;
-
-  // Bind checkbox events
-  var checks = ls.querySelectorAll(".c");
-  for (var i = 0; i < checks.length; i++) {
-    checks[i].addEventListener("change", function() {
-      var id = this.id.replace("cb", "");
-      var tk = todayKey();
-      if (!g_data.records[tk]) g_data.records[tk] = {};
-      if (g_data.records[tk][id]) {
-        delete g_data.records[tk][id];
-      } else {
-        g_data.records[tk][id] = true;
-      }
-      saveData(g_data);
-      renderAll();
-    });
-  }
-
-  // Bind delete events
-  var dels = ls.querySelectorAll(".dl");
-  for (var i = 0; i < dels.length; i++) {
-    dels[i].addEventListener("click", function() {
-      if (!confirm("确定要删除吗？记录也会被清除。")) return;
-      var id = this.getAttribute("data-id");
-      g_data.habits = g_data.habits.filter(function(h) { return h.id !== id; });
-      for (var k in g_data.records) {
-        delete g_data.records[k][id];
-        if (Object.keys(g_data.records[k]).length === 0) {
-          delete g_data.records[k];
-        }
-      }
-      saveData(g_data);
-      renderAll();
-    });
-  }
-}
-
-// ---- Render Week ----
-function renderWeek() {
-  var days = [];
-  for (var i = 6; i >= 0; i--) {
-    var d = new Date();
-    d.setDate(d.getDate() - i);
-    days.push(d);
-  }
-  var total = g_data.habits.length;
-  var wg = byId("wg");
-  if (total === 0) {
-    wg.innerHTML = "<div class=em><div class=be>📊</div><p>添加习惯后显示</p></div>";
-    return;
-  }
-  var html = "";
-  for (var i = 0; i < days.length; i++) {
-    var d = days[i];
-    var key = dateKey(d);
-    var done = countDone(g_data.records, g_data.habits, key);
-    var ratio = done / total;
-    var isToday = key === todayKey();
-    html += "<div class='wdi" + (isToday ? " t" : "") + "'>"
-      + "<div class=wn>" + WEEKDAY[d.getDay()] + "</div>"
-      + "<div class=wd2>" + (d.getMonth() + 1) + "/" + d.getDate() + "</div>"
-      + "<div class=wb><div class=wf style='width:" + (ratio * 100) + "%'></div></div>"
-      + "<div class=wc>" + done + "/" + total + "</div>"
-      + "</div>";
-  }
-  wg.innerHTML = html;
-}
-
-// ---- Render Month ----
-function renderMonth() {
-  var n = new Date();
-  var t = new Date(n.getFullYear(), n.getMonth() + g_monthOffset, 1);
-  var y = t.getFullYear();
-  var m = t.getMonth();
-  byId("mt").textContent = y + "年" + (m + 1) + "月";
-  var first = new Date(y, m, 1).getDay();
-  var days = new Date(y, m + 1, 0).getDate();
-  var total = g_data.habits.length;
-  var html = "<div class=cl>日</div><div class=cl>一</div><div class=cl>二</div><div class=cl>三</div><div class=cl>四</div><div class=cl>五</div><div class=cl>六</div>";
-  for (var i = 0; i < first; i++) html += "<div class=cd></div>";
-  var tk = todayKey();
-  for (var i = 1; i <= days; i++) {
-    var key = y + "-" + pad(m + 1) + "-" + pad(i);
-    var done = countDone(g_data.records, g_data.habits, key);
-    var isToday = key === tk;
-    html += "<div class='cd" + (isToday ? " t" : "") + "'>" + i;
-    if (done > 0) {
-      html += "<div class=cc>" + done + "/" + total + "</div>";
-    }
-    html += "</div>";
-  }
-  byId("ca").innerHTML = html;
-}
-byId("mp").onclick = function() { g_monthOffset--; renderMonth(); };
-byId("mn").onclick = function() { g_monthOffset++; renderMonth(); };
-
-// ---- Render Year ----
-function renderYear() {
-  var y = new Date().getFullYear() + g_yearOffset;
-  byId("yt").textContent = y + "年";
-  var ms = ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];
-  byId("hml").innerHTML = ms.map(function(m, i) {
-    return "<span style='grid-column:" + (Math.floor(i * 53 / 12) + 1) + "'>" + m + "</span>";
-  }).join("");
-  var st = new Date(y, 0, 1);
-  var en = new Date(y, 11, 31);
-  var totalDays = Math.ceil((en - st) / 86400000) + 1;
-  var sw = st.getDay();
-  var th = g_data.habits.length;
-  var cells = "";
-  var compDays = 0, totalChecked = 0, perfDays = 0, bestStreak = 0, curStreak = 0;
-  for (var i = 0; i < sw; i++) cells += "<div class=hc style='background:transparent'></div>";
-  for (var d = 0; d < totalDays; d++) {
-    var d2 = new Date(st);
-    d2.setDate(d2.getDate() + d);
-    var key = dateKey(d2);
-    var dd = countDone(g_data.records, g_data.habits, key);
-    totalChecked += dd;
-    var lv = 0;
-    if (th > 0) {
-      if (dd === th) lv = 4;
-      else if (dd / th >= 0.75) lv = 3;
-      else if (dd / th >= 0.5) lv = 2;
-      else if (dd > 0) lv = 1;
-    }
-    if (dd > 0) compDays++;
-    if (th > 0 && dd === th) {
-      perfDays++;
-      curStreak++;
-      if (curStreak > bestStreak) bestStreak = curStreak;
-    } else {
-      curStreak = 0;
-    }
-    cells += "<div class='hc l" + lv + "'></div>";
-  }
-  byId("hgr").innerHTML = cells;
-  byId("hms").innerHTML = "<span>📅 打卡 <strong>" + compDays + "</strong> 天</span>"
-    + "<span>✅ 完成 <strong>" + totalChecked + "</strong> 项</span>"
-    + "<span>🎯 全勤 <strong>" + perfDays + "</strong> 天</span>"
-    + "<span>🏆 最长连续 <strong>" + bestStreak + "</strong> 天</span>";
-}
-byId("yp").onclick = function() { g_yearOffset--; renderYear(); };
-byId("yn").onclick = function() { g_yearOffset++; renderYear(); };
-
-// ---- Tab Switching ----
-var tabIds = ["t0", "t1", "t2", "t3"];
-var panelIds = ["p0", "p1", "p2", "p3"];
-for (var i = 0; i < tabIds.length; i++) {
-  (function(idx) {
-    byId(tabIds[idx]).onclick = function() {
-      for (var j = 0; j < tabIds.length; j++) {
-        byId(tabIds[j]).className = "ts button";
-        byId(panelIds[j]).className = "pn";
-      }
-      this.className = "ts button a";
-      byId(panelIds[idx]).className = "pn s";
-    };
-  })(i);
-}
-// Fix: set initial tab
-byId("t0").className = "ts button a";
-
-// ---- Add Habit ----
-byId("ab").onclick = function() {
-  var inp = byId("in");
-  var name = inp.value.trim();
-  if (!name) { alert("请输入习惯名称"); return; }
-  if (name.length > 30) { alert("最长30个字"); return; }
-  var existing = g_data.habits.filter(function(h) { return h.name === name; });
-  if (existing.length > 0) { alert("已存在"); return; }
-  var id = Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
-  g_data.habits.push({ id: id, name: name, emoji: pickEmoji(name) });
-  saveData(g_data);
-  inp.value = "";
-  renderAll();
-};
-byId("in").onkeydown = function(e) {
-  if (e.key === "Enter") byId("ab").click();
-};
-
-// ---- Render All ----
-function renderAll() {
-  renderToday();
-  renderWeek();
-  renderMonth();
-  renderYear();
-}
-
-// ---- Init ----
-g_data = loadData();
-renderAll();
-
-// ---- Unregister old Service Workers ----
-if (navigator.serviceWorker) {
-  navigator.serviceWorker.getRegistrations().then(function(regs) {
-    for (var i = 0; i < regs.length; i++) {
-      regs[i].unregister();
-    }
-  }).catch(function() {});
-}
-</script>
-</body>
-</html>
+var S="kc",W=["日","一","二","三","四","五","六"];
+function fx(n){return(n+"").padStart(2,"0")}function td(){var d=new Date();return d.getFullYear()+"-"+fx(d.getMonth()+1)+"-"+fx(d.getDate())}
+function dk(d){return d.getFullYear()+"-"+fx(d.getMonth()+1)+"-"+fx(d.getDate())}
+function ld(){try{var r=localStorage.getItem(S);if(!r)return{h:[],r:{}};var d=JSON.parse(r);if(!d.h)d.h=[];if(!d.r)d.r={};return d}catch(e){return{h:[],r:{}}}}
+function sv(d){try{localStorage.setItem(S,JSON.stringify(d))}catch(e){}}
+function G(i){return document.getElementById(i)}
+var g=ld(),mo=0,yo=0
+function dn(r,h,k){var d=r[k]||{},c=0;for(var i=0;i<h.length;i++){if(d[h[i].id])c++}return c}
+function sk(r,h){if(h.length===0)return 0;var tk=td();if(dn(r,h,tk)<h.length)return 0;var s=1;for(var i=1;i<366;i++){var p=new Date();p.setDate(p.getDate()-i);if(dn(r,h,dk(p))===h.length)s++;else break}return s}
+function em(n){n=n||"";if(n.indexOf("数")>=0||n.indexOf("高")>=0)return"📐";if(n.indexOf("英")>=0||n.indexOf("单")>=0)return"📝";if(n.indexOf("政")>=0)return"🏛";if(n.indexOf("专")>=0||n.indexOf("据")>=0)return"⚙";if(n.indexOf("代")>=0||n.indexOf("编")>=0)return"💻";if(n.indexOf("阅")>=0||n.indexOf("读")>=0)return"📚";if(n.indexOf("真")>=0)return"📋";return"📖"}
+function r0(){var d=new Date();G("dt").textContent=d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日 星期"+W[d.getDay()];var tk=td(),h=g.h,t=h.length,dd=dn(g.r,g.h,tk),cp=2*Math.PI*26;G("rg").setAttribute("stroke-dasharray",(t>0?dd/t*cp:0)+" "+cp);G("ct").textContent=dd+"/"+t;if(t===0){G("tt").textContent="添加你的考研习惯吧 ✨";G("de").textContent="点击下方添加"}else if(dd===t){G("tt").textContent="🎉 今日全部完成";G("de").textContent="太棒了，坚持就是胜利！"}else{G("tt").textContent="今日完成 "+dd+"/"+t;G("de").textContent=dd===0?"开始今天的打卡吧 💪":"还差 "+(t-dd)+" 项，加油！"}var ss=sk(g.r,g.h);G("sk").textContent=ss>0?"🔥 连续 "+ss+" 天":"💪 今天就开始坚持吧";var ls=G("ls");if(h.length===0){ls.innerHTML="<div class=em><div class=be>📝</div><p>还没有习惯，添加一个开始打卡吧</p></div>";return}var m="";for(var i=0;i<h.length;i++){var x=h[i],ck=!!((g.r[tk]||{})[x.id]),hs=0;for(var j=0;j<366;j++){var cc=new Date();cc.setDate(cc.getDate()-j);if((g.r[dk(cc)]||{})[x.id])hs++;else break}var bd=hs>1?"<span style=font-size:.72rem;color:var(--g);background:#e8f0ea;padding:0 8px;border-radius:10px>🔥"+hs+"天</span>":(hs===1?"<span style=font-size:.72rem;color:var(--g);background:#e8f0ea;padding:0 8px;border-radius:10px>新打卡</span>":"");m+="<div class=it><input class=h type=checkbox id=c"+x.id+""+(ck?" checked":"")+"><label class=x for=c"+x.id+">"+(ck?"✓":"")+"</label><label class=nm for=c"+x.id+">"+(x.e||"📖")+" "+x.n+" "+bd+"</label><button class=dl data-i="+x.id+">✕</button></div>"}ls.innerHTML=m;var cbs=ls.querySelectorAll(".h");for(var i=0;i<cbs.length;i++){(function(cb){cb.addEventListener("change",function(){var id=cb.id.slice(1);if(!g.r[td()])g.r[td()]={};if(g.r[td()][id])delete g.r[td()][id];else g.r[td()][id]=true;sv(g);r()})})(cbs[i])}var dls=ls.querySelectorAll(".dl");for(var i=0;i<dls.length;i++){(function(dl){dl.addEventListener("click",function(){if(!confirm("确定要删除吗？记录也会被清除。"))return;var id=dl.getAttribute("data-i");g.h=g.h.filter(function(x){return x.id!==id});for(var k in g.r){delete g.r[k][id];if(Object.keys(g.r[k]).length===0)delete g.r[k]}sv(g);r()})})(dls[i])}}
+function r1(){var da=[],t=g.h.length;for(var i=6;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);da.push(d)}var wg=G("wg");if(t===0){wg.innerHTML="<div class=em><div class=be>📊</div><p>添加习惯后显示</p></div>";return}var m="";for(var i=0;i<da.length;i++){var d=da[i],k=dk(d),dd=dn(g.r,g.h,k),rt=dd/t,isT=k===td();m+="<div class=wdi"+(isT?" t":"")+"><div class=wn>"+W[d.getDay()]+"</div><div class=wd2>"+(d.getMonth()+1)+"/"+d.getDate()+"</div><div class=wb><div class=wf style=width:"+(rt*100)+"%></div></div><div class=wc>"+dd+"/"+t+"</div></div>"}wg.innerHTML=m}
+function r2(){var n=new Date(),t=new Date(n.getFullYear(),n.getMonth()+mo,1),y=t.getFullYear(),m=t.getMonth();G("mt").textContent=y+"年"+(m+1)+"月";var f=new Date(y,m,1).getDay(),d=new Date(y,m+1,0).getDate(),tl=g.h.length;var h="<div class=cl>日</div><div class=cl>一</div><div class=cl>二</div><div class=cl>三</div><div class=cl>四</div><div class=cl>五</div><div class=cl>六</div>";for(var i=0;i<f;i++)h+="<div class=cd></div>";var tk=td();for(var i=1;i<=d;i++){var k=y+"-"+fx(m+1)+"-"+fx(i),dd=dn(g.r,g.h,k),isT=k===tk;h+="<div class=cd"+(isT?" t":"")+">"+i+(dd>0?"<div class=cc>"+dd+"/"+tl+"</div>":"")+"</div>"}G("ca").innerHTML=h}
+function r3(){var n=new Date(),y=n.getFullYear()+yo;G("yt").textContent=y+"年";var ms=["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];G("hml").innerHTML=ms.map(function(m,i){return"<span style=grid-column:"+(Math.floor(i*53/12)+1)+">"+m+"</span>"}).join("");var st=new Date(y,0,1),en=new Date(y,11,31),td2=Math.ceil((en-st)/86400000)+1,sw=st.getDay(),th=g.h.length;var c="",cd=0,tc=0,pd=0,bs=0,cs=0;for(var i=0;i<sw;i++)c+="<div class=hc style=background:transparent></div>";for(var d=0;d<td2;d++){var d2=new Date(st);d2.setDate(d2.getDate()+d);var k=dk(d2),dd=dn(g.r,g.h,k);tc+=dd;var lv=0;if(th>0){if(dd===th)lv=4;else if(dd/th>=.75)lv=3;else if(dd/th>=.5)lv=2;else if(dd>0)lv=1}if(dd>0)cd++;if(th>0&&dd===th){pd++;cs++;if(cs>bs)bs=cs}else cs=0;c+="<div class=hc l"+lv+"></div>"}G("hgr").innerHTML=c;G("hms").innerHTML="<span>📅 打卡 <strong>"+cd+"</strong> 天</span><span>✅ 完成 <strong>"+tc+"</strong> 项</span><span>🎯 全勤 <strong>"+pd+"</strong> 天</span><span>🏆 最长连续 <strong>"+bs+"</strong> 天</span>"}
+G("mp").onclick=function(){mo--;r2()};G("mn").onclick=function(){mo++;r2()}
+G("yp").onclick=function(){yo--;r3()};G("yn").onclick=function(){yo++;r3()}
+G("ab").onclick=function(){var ip=G("in"),nm=ip.value.trim();if(!nm){alert("请输入习惯名称");return}if(nm.length>30){alert("最长30个字");return}for(var i=0;i<g.h.length;i++){if(g.h[i].n===nm){alert("已存在");return}}var id=Date.now().toString(36)+Math.random().toString(36).slice(2,5);g.h.push({id:id,n:nm,e:em(nm)});sv(g);ip.value="";r()}
+G("in").onkeydown=function(e){if(e.key==="Enter")G("ab").click()}
+var ti=["t0","t1","t2","t3"],pi=["p0","p1","p2","p3"]
+for(var i=0;i<ti.length;i++){(function(idx){G(ti[idx]).onclick=function(){for(var j=0;j<ti.length;j++){G(ti[j]).className="tb";G(pi[j]).className="pn"}this.className="tb a";G(pi[idx]).className="pn s"}})(i)}
+function r(){r0();r1();r2();r3()}
+r()
+if(navigator.serviceWorker){navigator.serviceWorker.getRegistrations().then(function(a){for(var i=0;i<a.length;i++){a[i].unregister()}}).catch(function(){})}
+</script></body></html>
