@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>习惯打卡</title>
+<title>涔犳儻鎵撳崱</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#f0f2f5;--card:#fff;--p:#5b7f6b;--t:#1f2937;--ts:#6b7280}
@@ -57,99 +57,100 @@ body{font-family:-apple-system,PingFang SC,Microsoft YaHei,sans-serif;background
 .hg .s{width:10px;height:10px;border-radius:2px;background:#eee}
 .hg .s.l1{background:#cfe3d4}.hg .s.l2{background:#9ec9a8}.hg .s.l3{background:#5b8c5a}.hg .s.l4{background:#2d5a3a}
 </style></head><body>
-<div class='ld' id='ld'><div class='lg'>📚</div><h1>习惯打卡</h1><p>习惯追踪 · 每天进步</p>
-<div class='bs'><button class='p1' onclick='sh(1)'>免费开始</button><button class='p2' onclick='sh(0)'>登录</button></div>
-<a class='gs' href='https://github.com/amourrrrr/kaoyan-checkin' target='_blank'>⭐ Star</a></div>
+<div class='ld' id='ld'><div class='lg'>馃摎</div><h1>涔犳儻鎵撳崱</h1><p>涔犳儻杩借釜 路 姣忓ぉ杩涙</p>
+<div class='bs'><button class='p1' onclick='sh(1)'>鍏嶈垂寮€濮?/button><button class='p2' onclick='sh(0)'>鐧诲綍</button></div>
+<a class='gs' href='https://github.com/amourrrrr/kaoyan-checkin' target='_blank'>猸?Star</a></div>
 <div class='ov' id='ov'><div class='md'>
-<div class='mt'><button class='a1' id='tl' onclick='st(0)'>登录</button><button id='tr' onclick='st(1)'>注册</button></div>
-<div class='fl'><label>用户名</label><input type='text' id='au'></div>
-<div class='fl'><label>密码</label><input type='password' id='ap'></div>
-<button class='sb' id='asb' onclick='hA()'>登录</button><div id='msg' class='er'></div></div></div>
-<div style='display:none' id='av'><div class='ah'><span class='ll'>📚 习惯打卡 <span id='ud' style='font-size:.78rem;color:var(--ts)'></span></span><button class='lo' onclick='lO()'>退出</button></div>
+<div class='mt'><button class='a1' id='tl' onclick='st(0)'>鐧诲綍</button><button id='tr' onclick='st(1)'>娉ㄥ唽</button></div>
+<div class='fl'><label>鐢ㄦ埛鍚?/label><input type='text' id='au'></div>
+<div class='fl'><label>瀵嗙爜</label><input type='password' id='ap'></div>
+<button class='sb' id='asb' onclick='hA()'>鐧诲綍</button><div id='msg' class='er'></div></div></div>
+<div style='display:none' id='av'><div class='ah'><span class='ll'>馃摎 涔犳儻鎵撳崱 <span id='ud' style='font-size:.78rem;color:var(--ts)'></span></span><button class='lo' onclick='lO()'>閫€鍑?/button></div>
 <div class='ap'><div class='pc'><div class='ri'><svg width='64' height='64' viewBox='0 0 64 64'><circle class='b' cx='32' cy='32' r='26'/><circle class='f' id='rf' cx='32' cy='32' r='26' stroke-dasharray='0 163.36'/></svg><div class='n' id='rc'>0/0</div></div>
-<div class='pi'><h2 id='pt'>添加习惯</h2><p id='pd' style='color:var(--ts)'>点击下方添加</p><div class='sk' id='sk'>🔥 0 天</div></div></div>
-<div class='tb'><button class='on' onclick='sw(0)'>今日</button><button onclick='sw(1)'>本周</button><button onclick='sw(2)'>本月</button><button onclick='sw(3)'>今年</button></div>
-<div class='pn s' id='p0'><div class='hl' id='hl'></div><div class='ad'><input id='hi' placeholder='添加习惯 ...' maxlength='30'><button id='ab'>+ 添加</button></div></div>
+<div class='pi'><h2 id='pt'>娣诲姞涔犳儻</h2><p id='pd' style='color:var(--ts)'>鐐瑰嚮涓嬫柟娣诲姞</p><div class='sk' id='sk'>馃敟 0 澶?/div></div></div>
+<div class='tb'><button class='on' onclick='sw(0)'>浠婃棩</button><button onclick='sw(1)'>鏈懆</button><button onclick='sw(2)'>鏈湀</button><button onclick='sw(3)'>浠婂勾</button></div>
+<div class='pn s' id='p0'><div class='hl' id='hl'></div><div class='ad'><input id='hi' placeholder='娣诲姞涔犳儻 ...' maxlength='30'><button id='ab'>+ 娣诲姞</button></div></div>
 <div class='pn' id='p1'><div class='wg' id='wg'></div></div>
 <div class='pn' id='p2'><div class='mh'><button onclick='mp();r2()'>&lt;</button><span id='mt'></span><button onclick='mn();r2()'>&gt;</button></div><div class='cg' id='cg'></div></div>
-<div class='pn' id='p3'><div class='yh'><button onclick='yp();r3()'>&lt;</button><span id='yt'></span><button onclick='yn();r3()'>&gt;</button></div><div class='hml' id='hml'></div><div class='hm' id='hm'></div><div class='hs' id='hs'></div><div class='hg'>少<span class='s'></span><span class='s l1'></span><span class='s l2'></span><span class='s l3'></span><span class='s l4'></span>多</div></div></div></div>
+<div class='pn' id='p3'><div class='yh'><button onclick='yp();r3()'>&lt;</button><span id='yt'></span><button onclick='yn();r3()'>&gt;</button></div><div class='hml' id='hml'></div><div class='hm' id='hm'></div><div class='hs' id='hs'></div><div class='hg'>灏?span class='s'></span><span class='s l1'></span><span class='s l2'></span><span class='s l3'></span><span class='s l4'></span>澶?/div></div></div></div>
 <script>
-// ===== 全局变量 =====
+// ===== 鍏ㄥ眬鍙橀噺 =====
 var U,D,mo=0,yo=0,at=0
 var $=function(x){return document.getElementById(x)}
-var W=['日','一','二','三','四','五','六']
+var W=['鏃?,'涓€','浜?,'涓?,'鍥?,'浜?,'鍏?]
 var errorBar=function(m){var e=$('av')||document.body;e.innerHTML+='<div style="background:red;color:white;padding:10px;text-align:center">'+m+'</div>'}
-// ===== 登录/注册 =====
+// ===== 鐧诲綍/娉ㄥ唽 =====
 function st(i){at=i;$('tl').className=i==0?'a1':'';$('tr').className=i==1?'a1':'';$('msg').innerHTML='';$('msg').className='er'}
 function sh(i){$('ov').className='ov s';st(i)}
 function hA(){try{
 var u=$('au').value.trim(),p=$('ap').value.trim(),m=$('msg')
-if(!u||!p){m.innerHTML='请填写完整';return}
+if(!u||!p){m.innerHTML='璇峰～鍐欏畬鏁?;return}
 var us=JSON.parse(localStorage.getItem('ku')||'{}')
 var hp=p.split('').reduce(function(a,c){return((a<<5)-a)+c.charCodeAt(0)},0)
-if(at==1){if(us[u]){m.innerHTML='已存在';return}
-us[u]={h:hp};localStorage.setItem('ku',JSON.stringify(us));m.className='sc';m.innerHTML='成功！';setTimeout(function(){st(0)},1200)}
-else{if(!us[u]){m.innerHTML='信息错误';return}
-if(us[u].h!=hp){m.innerHTML='信息错误';return}
+if(at==1){if(us[u]){m.innerHTML='宸插瓨鍦?;return}
+us[u]={h:hp};localStorage.setItem('ku',JSON.stringify(us));m.className='sc';m.innerHTML='鎴愬姛锛?;setTimeout(function(){st(0)},1200)}
+else{if(!us[u]){m.innerHTML='淇℃伅閿欒';return}
+if(us[u].h!=hp){m.innerHTML='淇℃伅閿欒';return}
 localStorage.setItem('ks',JSON.stringify({u:u}));$('ov').className='ov';go(u)}
 }catch(e){errorBar(e.message)}}
-// ===== 数据 =====
+// ===== 鏁版嵁 =====
 function tK(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function dK(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function ld(){try{var x=localStorage.getItem('kd_'+U);if(!x)return{h:[],r:{}};var d=JSON.parse(x);if(!d.h)d.h=[];if(!d.r)d.r={};return d}catch(e){return{h:[],r:{}}}}
 function sv(d){try{localStorage.setItem('kd_'+U,JSON.stringify(d))}catch(e){}}
 function ct(r,h,k){var d=r[k]||{},c=0;for(var i=0;i<h.length;i++){if(d[h[i].id])c++}return c}
 function sr(r,h){if(!h||!h.length)return 0;var tk=tK();if(ct(r,h,tk)<h.length)return 0;var s=1;for(var i=1;i<366;i++){var p=new Date();p.setDate(p.getDate()-i);if(ct(r,h,dK(p))==h.length)s++;else break}return s}
-function em(n){if(!n)n='';if(n.indexOf('数')>=0||n.indexOf('高')>=0)return'📐';if(n.indexOf('英')>=0||n.indexOf('单')>=0)return'📝';return'📖'}
-// ===== 渲染今日 =====
+function em(n){if(!n)n='';if(n.indexOf('鏁?)>=0||n.indexOf('楂?)>=0)return'馃搻';if(n.indexOf('鑻?)>=0||n.indexOf('鍗?)>=0)return'馃摑';return'馃摉'}
+// ===== 娓叉煋浠婃棩 =====
 function r0(){try{
 var h=D.h,t=h.length,tk=tK(),dc=ct(D.r,h,tk),cp=2*Math.PI*26
 $('rf').setAttribute('stroke-dasharray',(t>0?dc/t*cp:0)+' '+cp)
 $('rc').innerHTML=dc+'/'+t
-if(t==0){$('pt').innerHTML='添加你的习惯吧';$('pd').innerHTML='点击下方添加'}
-else if(dc==t){$('pt').innerHTML='全部完成！';$('pd').innerHTML='太棒了！'}
-else{$('pt').innerHTML='今日 '+dc+'/'+t;$('pd').innerHTML=dc?'还差 '+(t-dc):'开始吧'}
-var sk=sr(D.r,h);$('sk').innerHTML=sk>0?'🔥'+sk+'天':'开始吧'
-var l=$('hl');if(h.length==0){l.innerHTML='<div class=em>点击下方添加你的第一个习惯</div>';return}
+if(t==0){$('pt').innerHTML='娣诲姞浣犵殑涔犳儻鍚?;$('pd').innerHTML='鐐瑰嚮涓嬫柟娣诲姞'}
+else if(dc==t){$('pt').innerHTML='鍏ㄩ儴瀹屾垚锛?;$('pd').innerHTML='澶浜嗭紒'}
+else{$('pt').innerHTML='浠婃棩 '+dc+'/'+t;$('pd').innerHTML=dc?'杩樺樊 '+(t-dc):'寮€濮嬪惂'}
+var sk=sr(D.r,h);$('sk').innerHTML=sk>0?'馃敟'+sk+'澶?:'寮€濮嬪惂'
+var l=$('hl');if(h.length==0){l.innerHTML='<div class=em>杩樻病鏈変範鎯紝鐐瑰嚮涓嬫柟娣诲姞</div>';return}
 var hh='',tk2=tK()
 for(var i=0;i<h.length;i++){
 var x=h[i],ch=!!((D.r[tk2]||{})[x.id]),hs=0
 for(var j=0;j<366;j++){var cc=new Date();cc.setDate(cc.getDate()-j);if((D.r[dK(cc)]||{})[x.id])hs++;else break}
-var bd=hs>1?'<span class=sk>'+hs+'天</span>':(hs==1?'<span class=sk>新</span>':'')
+var bd=hs>1?'<span class=sk>'+hs+'澶?/span>':(hs==1?'<span class=sk>鏂?/span>':'')
 var ak=ch?' checked':''
-hh+='<div class=hi><input class=h type=checkbox id=\'z'+x.id+'\''+ak+'><label class=bx for=\'z'+x.id+'\'>'+(ch?'✓':'')+'</label><label class=lb for=\'z'+x.id+'\'>'+(x.e||'📖')+' '+x.n+' '+bd+'</label><button class=dl>✕</button></div>'}
+hh+='<div class=hi><input class=h type=checkbox id=\'z'+x.id+'\''+ak+'><label class=bx for=\'z'+x.id+'\'>'+(ch?'鉁?:'')+'</label><label class=lb for=\'z'+x.id+'\'>'+(x.e||'馃摉')+' '+x.n+' '+bd+'</label><button class=dl>鉁?/button></div>'}
 l.innerHTML=hh
 l.querySelectorAll('.h').forEach(function(c){c.onchange=function(){var id=this.id.replace('z',''),tk=tK();if(!D.r[tk])D.r[tk]={};if(D.r[tk][id])delete D.r[tk][id];else D.r[tk][id]=true;sv(D);ra()}})
-l.querySelectorAll('.dl').forEach(function(b){b.onclick=function(){if(!confirm('确定？'))return;var id=this.parentNode.querySelector('.h').id.replace('z','');D.h=D.h.filter(function(x){return x.id!=id});for(var k in D.r){delete D.r[k][id];if(!Object.keys(D.r[k]).length)delete D.r[k]}sv(D);ra()}})
+l.querySelectorAll('.dl').forEach(function(b){b.onclick=function(){if(!confirm('纭畾锛?))return;var id=this.parentNode.querySelector('.h').id.replace('z','');D.h=D.h.filter(function(x){return x.id!=id});for(var k in D.r){delete D.r[k][id];if(!Object.keys(D.r[k]).length)delete D.r[k]}sv(D);ra()}})
 }catch(e){errorBar('r0:'+e.message)}}
-// ===== 渲染周月年 =====
-function r1(){try{var da=[];for(var i=6;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);da.push(d)}var t=D.h.length,w=$('wg');if(t==0){w.innerHTML='<div class=em>点击下方添加习惯</div>';return}var m='';for(var i=0;i<da.length;i++){var d=da[i],k=dK(d),dc=ct(D.r,D.h,k),rt=dc/t,isT=k==tK();m+='<div class=wd'+(isT?' today':'')+'><div class=wn>'+W[d.getDay()]+'</div><div class=wd2>'+(d.getMonth()+1)+'/'+d.getDate()+'</div><div class=wb><div class=wf style=width:'+(rt*100)+'%></div></div><div class=wc>'+dc+'/'+t+'</div></div>'}w.innerHTML=m}catch(e){errorBar('r1:'+e.message)}}
-function r2(){try{var n=new Date(),t=new Date(n.getFullYear(),n.getMonth()+mo,1),y=t.getFullYear(),m=t.getMonth();$('mt').innerHTML=y+'年'+(m+1)+'月';var f=new Date(y,m,1).getDay(),d=new Date(y,m+1,0).getDate(),tl=D.h.length;var hh='';for(var i=0;i<f;i++)hh+='<div class=cd></div>';for(var i=1;i<=d;i++){var k=y+'-'+String(m+1).padStart(2,'0')+'-'+String(i).padStart(2,'0');hh+='<div class=cd style=background:'+(ct(D.r,D.h,k)>0?'#5b8c5a':'')+'>'+(ct(D.r,D.h,k)>0?'✓':'')+'</div>'}$('cg').innerHTML=hh}catch(e){errorBar('r2:'+e.message)}}
-function r3(){try{var y=new Date().getFullYear()+yo;$('yt').innerHTML=y+'年';$('hml').innerHTML=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'].map(function(m,i){return'<span style=grid-column:'+(Math.floor(i*53/12)+1)+'>'+m+'</span>'}).join('');var st=new Date(y,0,1),en=new Date(y,11,31),td2=Math.ceil((en-st)/86400000)+1,sw=st.getDay(),th=D.h.length;var c='',cd=0,tc=0,pd=0,bs=0,cs=0;for(var i=0;i<sw;i++)c+='<div class=hc style=background:transparent></div>';for(var d=0;d<td2;d++){var d2=new Date(st);d2.setDate(d2.getDate()+d);var k=dK(d2),dc=ct(D.r,D.h,k);tc+=dc;var lv=0;if(th>0){if(dc==th)lv=4;else if(dc/th>=.75)lv=3;else if(dc/th>=.5)lv=2;else if(dc>0)lv=1}if(dc>0)cd++;if(th>0&&dc==th){pd++;cs++;if(cs>bs)bs=cs}else cs=0;c+='<div class=hc l'+lv+'></div>'}
-$('hm').innerHTML=c;$('hs').innerHTML='📅'+cd+'天 ✅'+tc+'项 🎯'+pd+'天 🏆'+bs+'天'}catch(e){errorBar('r3:'+e.message)}}
+// ===== 娓叉煋鍛ㄦ湀骞?=====
+function r1(){try{var da=[];for(var i=6;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);da.push(d)}var t=D.h.length,w=$('wg');if(t==0){w.innerHTML='<div class=em>娣诲姞涔犳儻鍚庢樉绀?/div>';return}var m='';for(var i=0;i<da.length;i++){var d=da[i],k=dK(d),dc=ct(D.r,D.h,k),rt=dc/t,isT=k==tK();m+='<div class=wd'+(isT?' today':'')+'><div class=wn>'+W[d.getDay()]+'</div><div class=wd2>'+(d.getMonth()+1)+'/'+d.getDate()+'</div><div class=wb><div class=wf style=width:'+(rt*100)+'%></div></div><div class=wc>'+dc+'/'+t+'</div></div>'}w.innerHTML=m}catch(e){errorBar('r1:'+e.message)}}
+function r2(){try{var n=new Date(),t=new Date(n.getFullYear(),n.getMonth()+mo,1),y=t.getFullYear(),m=t.getMonth();$('mt').innerHTML=y+'骞?+(m+1)+'鏈?;var f=new Date(y,m,1).getDay(),d=new Date(y,m+1,0).getDate(),tl=D.h.length;var hh='';for(var i=0;i<f;i++)hh+='<div class=cd></div>';for(var i=1;i<=d;i++){var k=y+'-'+String(m+1).padStart(2,'0')+'-'+String(i).padStart(2,'0');hh+='<div class=cd style=background:'+(ct(D.r,D.h,k)>0?'#5b8c5a':'')+'>'+(ct(D.r,D.h,k)>0?'鉁?:'')+'</div>'}$('cg').innerHTML=hh}catch(e){errorBar('r2:'+e.message)}}
+function r3(){try{var y=new Date().getFullYear()+yo;$('yt').innerHTML=y+'骞?;$('hml').innerHTML=['1鏈?,'2鏈?,'3鏈?,'4鏈?,'5鏈?,'6鏈?,'7鏈?,'8鏈?,'9鏈?,'10鏈?,'11鏈?,'12鏈?].map(function(m,i){return'<span style=grid-column:'+(Math.floor(i*53/12)+1)+'>'+m+'</span>'}).join('');var st=new Date(y,0,1),en=new Date(y,11,31),td2=Math.ceil((en-st)/86400000)+1,sw=st.getDay(),th=D.h.length;var c='',cd=0,tc=0,pd=0,bs=0,cs=0;for(var i=0;i<sw;i++)c+='<div class=hc style=background:transparent></div>';for(var d=0;d<td2;d++){var d2=new Date(st);d2.setDate(d2.getDate()+d);var k=dK(d2),dc=ct(D.r,D.h,k);tc+=dc;var lv=0;if(th>0){if(dc==th)lv=4;else if(dc/th>=.75)lv=3;else if(dc/th>=.5)lv=2;else if(dc>0)lv=1}if(dc>0)cd++;if(th>0&&dc==th){pd++;cs++;if(cs>bs)bs=cs}else cs=0;c+='<div class=hc l'+lv+'></div>'}
+$('hm').innerHTML=c;$('hs').innerHTML='馃搮'+cd+'澶?鉁?+tc+'椤?馃幆'+pd+'澶?馃弳'+bs+'澶?}catch(e){errorBar('r3:'+e.message)}}
 function mp(){mo--}function mn(){mo++}
 function yp(){yo--}function yn(){yo++}
-// ===== Tab切换 =====
+// ===== Tab鍒囨崲 =====
 function sw(i){try{
 document.querySelectorAll('.tb button').forEach(function(b){b.className=''})
 document.querySelectorAll('.pn').forEach(function(p){p.className='pn'})
 document.querySelectorAll('.tb button')[i].className='on'
 document.querySelectorAll('.pn')[i].className='pn s'
 if(i==1)r1();if(i==2)r2();if(i==3)r3()}catch(e){errorBar('sw:'+e.message)}}
-// ===== 添加习惯 =====
+// ===== 娣诲姞涔犳儻 =====
 $('ab').onclick=function(){try{
-var ip=$('hi'),n=ip.value.trim();if(!n){alert('请输入');return}if(n.length>30){alert('太长');return}
-for(var i=0;i<D.h.length;i++){if(D.h[i].n==n){alert('已存在');return}}
+var ip=$('hi'),n=ip.value.trim();if(!n){alert('璇疯緭鍏?);return}if(n.length>30){alert('澶暱');return}
+for(var i=0;i<D.h.length;i++){if(D.h[i].n==n){alert('宸插瓨鍦?);return}}
 var id=Date.now().toString(36)+Math.random().toString(36).slice(2,5)
 D.h.push({id:id,n:n,e:em(n)});sv(D);ip.value='';ra()}catch(e){errorBar('add:'+e.message)}}
 $('hi').onkeydown=function(e){if(e.keyCode==13)$('ab').click()}
 $('ap').onkeydown=function(e){if(e.keyCode==13)hA()}
 $('ov').onclick=function(e){if(e.target==this)this.className='ov'}
-// ===== 渲染 =====
+// ===== 娓叉煋 =====
 function ra(){r0();r1();r2();r3()}
-function et(){var n=prompt("标题：",localStorage.getItem("kt")||"习惯打卡");if(n&&n.trim()){localStorage.setItem("kt",n.trim());$("at").innerHTML="📚 "+n.trim()}};var lt=localStorage.getItem("kt");if(lt)$("at").innerHTML="📚 "+lt;function go(u){U=u;D=ld();$('ld').style.display='none';$('av').style.display='block';$('ud').innerHTML='👤 '+u;ra()}
+function et(){var n=prompt('标题：',localStorage.getItem('kt')||'习惯打卡');if(n&&n.trim()){localStorage.setItem('kt',n.trim());document.getElementById('at').innerHTML='📚 '+n.trim()}};var lt=localStorage.getItem('kt');if(lt)document.getElementById('at').innerHTML='📚 '+lt;function go(u){U=u;D=ld();$('ld').style.display='none';$('av').style.display='block';$('ud').innerHTML='馃懁 '+u;ra()}
 function lO(){localStorage.removeItem('ks');U=null;D=null;$('av').style.display='none';$('ld').style.display='flex'}
-// ===== 初始化 =====
+// ===== 鍒濆鍖?=====
 try{var s=JSON.parse(localStorage.getItem('ks')||'null');if(s&&s.u)go(s.u)}catch(e){}
 if(navigator.serviceWorker){navigator.serviceWorker.getRegistrations().then(function(r){for(var i=0;i<r.length;i++){r[i].unregister()}}).catch(function(){})}
 </script></body></html>
+
