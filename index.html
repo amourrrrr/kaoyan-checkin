@@ -1,111 +1,83 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>考研打卡</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#f8f7f4;--card:#fff;--green:#5b8c5a;--dark:#3d5a4a;--text:#2c3e2d;--gray:#7a8f7e;--border:#eae7e0}
-body{font-family:-apple-system,PingFang SC,Microsoft YaHei,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh}
-.app{max-width:520px;margin:0 auto;padding:20px 16px 40px}
-header{text-align:center;padding:24px 0 16px} header h1{font-size:1.5rem;color:var(--dark)}
-header .date{font-size:.85rem;color:var(--gray);margin-top:4px}
-.rw{display:flex;align-items:center;gap:16px;background:var(--card);border-radius:12px;padding:16px 20px;margin:12px 0 20px;box-shadow:0 1px 6px rgba(0,0,0,.06)}
-.ring{width:64px;height:64px;position:relative;flex-shrink:0}
-.ring svg{transform:rotate(-90deg)} .ring .rb{fill:none;stroke:var(--border);stroke-width:6}
-.ring .rf{fill:none;stroke:var(--green);stroke-width:6;stroke-linecap:round;transition:.4s}
-.ring .rn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:var(--dark)}
-.ri h2{font-size:.95rem;font-weight:600} .ri p{font-size:.82rem;color:var(--gray);margin-top:2px}
-.sk{display:inline-block;margin-top:6px;font-size:.78rem;color:var(--green);background:#e8f0ea;padding:2px 10px;border-radius:20px}
-.tabs{display:flex;gap:4px;background:var(--card);padding:4px;border-radius:12px;box-shadow:0 1px 6px rgba(0,0,0,.06)}
-.tab{flex:1;padding:8px;text-align:center;font-size:.85rem;border:none;background:transparent;color:var(--gray);cursor:pointer;border-radius:8px}
-.tab.active{background:var(--green);color:#fff;font-weight:600}
-.pn{display:none} .pn.s{display:block}
-.lst{display:flex;flex-direction:column;gap:8px}
-.it{display:flex;align-items:center;gap:10px;background:var(--card);padding:10px 14px;border-radius:12px;box-shadow:0 1px 6px rgba(0,0,0,.06)}
-.it .cb{display:none}
-.it .bx{width:22px;height:22px;border:2px solid var(--border);border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.8rem;color:transparent;transition:.15s}
-.it .cb:checked+.bx{background:var(--green);border-color:var(--green);color:#fff}
-.it .nm{flex:1;font-size:.92rem;font-weight:500;cursor:pointer}
-.it .dl{width:26px;height:26px;border:none;background:transparent;color:#ccc;cursor:pointer;border-radius:6px;font-size:1rem}
-.it .dl:hover{background:#fbe9e9;color:#d97a7a}
-.ad{display:flex;gap:8px;margin-top:12px}
-.ad input{flex:1;padding:10px 12px;border:2px dashed var(--border);border-radius:12px;font-size:.9rem;outline:none;background:var(--card)}
-.ad input:focus{border-color:var(--green)}
-.ad button{padding:10px 16px;border:none;background:var(--green);color:#fff;border-radius:12px;font-size:.9rem;font-weight:600;cursor:pointer}
-.ad button:hover{background:var(--dark)}
-.em{text-align:center;padding:40px 20px;color:var(--gray);font-size:.9rem} .em .be{font-size:2.5rem;margin-bottom:8px}
-.wg{display:flex;gap:6px} .wd{flex:1;background:var(--card);border-radius:10px;padding:8px 4px;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.06)}
-.wd .wn{font-size:.68rem;color:var(--gray)} .wd .wd{font-size:.72rem;font-weight:600;margin:2px 0 4px}
-.wd .wb{height:4px;border-radius:4px;background:var(--border);overflow:hidden} .wd .wf{height:100%;border-radius:4px;background:var(--green);transition:.3s}
-.wd .wc{font-size:.7rem;color:var(--gray)} .wd.t{background:#e8f0ea}
-.mh{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.mh button{border:none;background:var(--card);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;box-shadow:0 1px 6px rgba(0,0,0,.06)}
-.mh span{font-size:.95rem;font-weight:600}
-.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:3px} .cl{text-align:center;font-size:.68rem;color:var(--gray);padding:4px 0}
-.cd{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:6px;font-size:.78rem;background:var(--card);gap:2px}
-.cd.t{border:2px solid var(--green);font-weight:700} .cd .cc{font-size:.55rem;color:var(--gray)}
-.yh{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.yh button{border:none;background:var(--card);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;box-shadow:0 1px 6px rgba(0,0,0,.06)}
-.yh span{font-size:.95rem;font-weight:600}
-.hm{display:grid;grid-template-columns:repeat(53,1fr);gap:2px} .hc{aspect-ratio:1;border-radius:2px;background:var(--border);min-width:5px}
-.hc.l1{background:#cfe3d4} .hc.l2{background:#9ec9a8} .hc.l3{background:#5b8c5a} .hc.l4{background:#2d5a3a}
-.hl{display:grid;grid-template-columns:repeat(12,1fr);font-size:.55rem;color:var(--gray);margin-bottom:3px}
-.hs{display:flex;gap:12px;margin:8px 0 2px;font-size:.78rem;color:var(--gray);flex-wrap:wrap} .hs strong{color:var(--text)}
-.hlg{display:flex;align-items:center;gap:3px;font-size:.65rem;color:var(--gray);justify-content:flex-end;margin-top:4px}
-.hlg .sw{width:10px;height:10px;border-radius:2px;background:var(--border)}
-.hlg .sw.l1{background:#cfe3d4}.hlg .sw.l2{background:#9ec9a8}.hlg .sw.l3{background:#5b8c5a}.hlg .sw.l4{background:#2d5a3a}
-</style>
-</head><body>
-<div class="app">
-<header><h1>📚 考研打卡</h1><div class="date" id="date"></div></header>
-<div class="rw"><div class="ring"><svg width="64" height="64" viewBox="0 0 64 64"><circle class="rb" cx="32" cy="32" r="26"/><circle class="rf" id="ring" cx="32" cy="32" r="26" stroke-dasharray="0 163.36"/></svg><div class="rn" id="cnt">0/0</div></div><div class="ri"><h2 id="title">今天还没打卡</h2><p id="desc">添加习惯，开始坚持</p><div class="sk" id="sk">🔥 连续 0 天</div></div></div>
-<div class="tabs"><button class="tab active" data-p="today">今日</button><button class="tab" data-p="week">本周</button><button class="tab" data-p="month">本月</button><button class="tab" data-p="year">今年</button></div>
-<div class="pn s" id="pt"><div class="lst" id="lst"></div><div class="ad"><input id="inp" placeholder="添加习惯，如 背单词" maxlength="30"><button id="addBtn">＋ 添加</button></div></div>
-<div class="pn" id="pw"><div class="wg" id="wg"></div></div>
-<div class="pn" id="pm"><div class="mh"><button id="mp">‹</button><span id="mt"></span><button id="mn">›</button></div><div class="cal" id="cal"></div></div>
-<div class="pn" id="py"><div class="yh"><button id="yp">‹</button><span id="yt"></span><button id="yn">›</button></div><div class="hl" id="hl"></div><div class="hm" id="hm"></div><div class="hs" id="hs"></div><div class="hlg">少 <span class="sw"></span><span class="sw l1"></span><span class="sw l2"></span><span class="sw l3"></span><span class="sw l4"></span> 多</div></div>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>考研打卡</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f8f7f4;--card:#fff;--g:#5b8c5a;--d:#3d5a4a;--t:#2c3e2d;--y:#7a8f7e}
+body{font-family:-apple-system,PingFang SC,Microsoft YaHei,sans-serif;background:var(--bg);color:var(--t);line-height:1.5;min-height:100vh}
+.ap{max-width:520px;margin:0 auto;padding:20px 16px 40px}
+h{text-align:center;padding:24px 0 16px}h1{font-size:1.5rem;color:var(--d)}.dt{font-size:.85rem;color:var(--y);margin-top:4px}
+.rw{display:flex;align-items:center;gap:16px;background:var(--card);border-radius:12px;padding:16px 20px;margin:12px 0 20px}
+.ri{width:64px;height:64px;position:relative;flex-shrink:0}.ri svg{transform:rotate(-90deg)}.ri .b{fill:none;stroke:#ddd;stroke-width:6}.ri .f{fill:none;stroke:var(--g);stroke-width:6;stroke-linecap:round;transition:.4s}.ri .n{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:var(--d)}
+.rf h2{font-size:.95rem;font-weight:600}.rf p{font-size:.82rem;color:var(--y);margin-top:2px}.sk{display:inline-block;margin-top:6px;font-size:.78rem;color:var(--g);background:#e8f0ea;padding:2px 10px;border-radius:20px}
+.ts{display:flex;gap:4px;background:var(--card);padding:4px;border-radius:12px;margin-bottom:16px}
+.tb{flex:1;padding:8px;text-align:center;font-size:.85rem;border:none;background:transparent;color:var(--y);cursor:pointer;border-radius:8px}.tb.a{background:var(--g);color:#fff;font-weight:600}
+.pn{display:none}.pn.s{display:block}
+.ls{display:flex;flex-direction:column;gap:8px}.it{display:flex;align-items:center;gap:10px;background:var(--card);padding:10px 14px;border-radius:12px}
+.it .h{display:none}.it .x{width:22px;height:22px;border:2px solid #ddd;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.8rem;color:transparent;transition:.15s}
+.it .h:checked+.x{background:var(--g);border-color:var(--g);color:#fff}
+.it .nm{flex:1;font-size:.92rem;font-weight:500;cursor:pointer}.it .dl{width:26px;height:26px;border:none;background:transparent;color:#ccc;cursor:pointer;border-radius:6px;font-size:1rem}.it .dl:hover{background:#fbe9e9;color:#d97a7a}
+.ad{display:flex;gap:8px;margin-top:12px}.ad input{flex:1;padding:10px 12px;border:2px dashed #ddd;border-radius:12px;font-size:.9rem;outline:none;background:var(--card)}.ad input:focus{border-color:var(--g)}.ad button{padding:10px 16px;border:none;background:var(--g);color:#fff;border-radius:12px;font-size:.9rem;font-weight:600;cursor:pointer}.ad button:hover{background:var(--d)}
+.em{text-align:center;padding:40px 20px;color:var(--y);font-size:.9rem}.em .be{font-size:2.5rem;margin-bottom:8px}
+.wg{display:flex;gap:6px}.wd{flex:1;background:var(--card);border-radius:10px;padding:8px 4px;text-align:center}.wd .wn{font-size:.68rem;color:var(--y)}.wd .wd2{font-size:.72rem;font-weight:600;margin:2px 0 4px}.wd .wb{height:4px;border-radius:4px;background:#ddd;overflow:hidden}.wd .wf{height:100%;border-radius:4px;background:var(--g);transition:.3s}.wd .wc{font-size:.7rem;color:var(--y)}.wd.t{background:#e8f0ea}
+.mh{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}.mh button{border:none;background:var(--card);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem}.mh span{font-size:.95rem;font-weight:600}
+.ca{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}.cl{text-align:center;font-size:.68rem;color:var(--y);padding:4px 0}.cd{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:6px;font-size:.78rem;background:var(--card);gap:2px}.cd.t{border:2px solid var(--g);font-weight:700}.cd .cc{font-size:.55rem;color:var(--y)}
+.yh{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}.yh button{border:none;background:var(--card);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem}.yh span{font-size:.95rem;font-weight:600}
+.hm{display:grid;grid-template-columns:repeat(53,1fr);gap:2px}.hc{aspect-ratio:1;border-radius:2px;background:#ddd;min-width:5px}.hc.l1{background:#cfe3d4}.hc.l2{background:#9ec9a8}.hc.l3{background:#5b8c5a}.hc.l4{background:#2d5a3a}
+.hl{display:grid;grid-template-columns:repeat(12,1fr);font-size:.55rem;color:var(--y);margin-bottom:3px}
+.hs{display:flex;gap:12px;margin:8px 0 2px;font-size:.78rem;color:var(--y);flex-wrap:wrap}.hs strong{color:var(--t)}
+.hlg{display:flex;align-items:center;gap:3px;font-size:.65rem;color:var(--y);justify-content:flex-end;margin-top:4px}.hlg .s{width:10px;height:10px;border-radius:2px;background:#ddd}.hlg .s.l1{background:#cfe3d4}.hlg .s.l2{background:#9ec9a8}.hlg .s.l3{background:#5b8c5a}.hlg .s.l4{background:#2d5a3a}
+</style></head><body><div class="ap" id="ap">
+<h><h1>📚 考研打卡</h1><div class="dt" id="dt"></div></h>
+<div class="rw"><div class="ri"><svg width="64" height="64" viewBox="0 0 64 64"><circle class="b" cx="32" cy="32" r="26"/><circle class="f" id="rg" cx="32" cy="32" r="26" stroke-dasharray="0 163.36"/></svg><div class="n" id="ct">0/0</div></div><div class="rf"><h2 id="tt">今天还没打卡</h2><p id="de">添加习惯，开始坚持</p><div class="sk" id="sk">🔥 连续 0 天</div></div></div>
+<div class="ts"><button class="tb a" id="t0">今日</button><button class="tb" id="t1">本周</button><button class="tb" id="t2">本月</button><button class="tb" id="t3">今年</button></div>
+<div class="pn s" id="p0"><div class="ls" id="ls"></div><div class="ad"><input id="in" placeholder="添加习惯，如 背单词" maxlength="30"><button id="ab">＋ 添加</button></div></div>
+<div class="pn" id="p1"><div class="wg" id="wg"></div></div>
+<div class="pn" id="p2"><div class="mh"><button id="mp">‹</button><span id="mt"></span><button id="mn">›</button></div><div class="ca" id="ca"></div></div>
+<div class="pn" id="p3"><div class="yh"><button id="yp">‹</button><span id="yt"></span><button id="yn">›</button></div><div class="hl" id="hl"></div><div class="hm" id="hm"></div><div class="hs" id="hs"></div><div class="hlg">少 <span class="s"></span><span class="s l1"></span><span class="s l2"></span><span class="s l3"></span><span class="s l4"></span> 多</div></div>
 </div>
 <script>
-var KEY="kc",W="日|一|二|三|四|五|六".split("|");
-function ld(){try{var r=localStorage.getItem(KEY);if(!r)return{h:[],r:{}};var d=JSON.parse(r);if(!d.h)d.h=[];if(!d.r)d.r={};return d}catch(e){return{h:[],r:{}}}}
-function sv(d){try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
-function td(){var d=new Date();return d.getFullYear()+"-"+((d.getMonth()+1)+"").padStart(2,"0")+"-"+(d.getDate()+"").padStart(2,"0")}
-function dk(d){return d.getFullYear()+"-"+((d.getMonth()+1)+"").padStart(2,"0")+"-"+(d.getDate()+"").padStart(2,"0")}
-function gn(rec,h,key){var d=rec[key]||{},c=0;for(var i=0;i<h.length;i++){if(d[h[i].id])c++}return c}
-function gs(rec,h){if(h.length===0)return 0;var tk=td();if(gn(rec,h,tk)<h.length)return 0;var s=1,td2=new Date();for(var i=1;i<366;i++){var p=new Date(td2);p.setDate(p.getDate()-i);if(gn(rec,h,dk(p))===h.length)s++;else break}return s}
-function l7(){var d=[],t=new Date();for(var i=6;i>=0;i--){var c=new Date(t);c.setDate(c.getDate()-i);d.push(c)}return d}
-function em(n){if(/[数学高数]/.test(n))return"\ud83d\udcd0";if(/[英语单词]/.test(n))return"\ud83d\udcdd";if(/[政治]/.test(n))return"\ud83c\udfdb";if(/[专业数据]/.test(n))return"\u2699";if(/[代码编程]/.test(n))return"\ud83d\udcbb";if(/[阅读读书]/.test(n))return"\ud83d\udcda";if(/[真题]/.test(n))return"\ud83d\udccb";return"\ud83d\udcd6"}
-var data=ld();
-function rt(){
-var d2=new Date();document.getElementById("date").textContent=d2.getFullYear()+"年"+(d2.getMonth()+1)+"月"+d2.getDate()+"日 星期"+W[d2.getDay()];
-var tk=td(),h=data.h,t=h.length,dd=gn(data.r,h,tk),circ=2*Math.PI*26;
-document.getElementById("ring").setAttribute("stroke-dasharray",(t>0?dd/t*circ:0)+" "+circ);
-document.getElementById("cnt").textContent=dd+"/"+t;
-if(t===0){document.getElementById("title").textContent="添加你的考研习惯吧✨";document.getElementById("desc").textContent="点击下方添加"}
-else if(dd===t){document.getElementById("title").textContent="\ud83c\udf89今日全部完成！";document.getElementById("desc").textContent="太棒了，坚持就是胜利！"}
-else{document.getElementById("title").textContent="今日完成 "+dd+"/"+t;document.getElementById("desc").textContent=dd===0?"开始今天的打卡吧\ud83d\udcaa":"还差 "+(t-dd)+" 项，加油！"}
-var sk2=gs(data.r,data.h);document.getElementById("sk").textContent=sk2>0?"\ud83d\udd25连续 "+sk2+" 天":"\ud83d\udcaa今天就开始坚持吧";
-var lst=document.getElementById("lst");
-if(h.length===0){lst.innerHTML="<div class=em><div class=be>\ud83d\udcdd</div><p>还没有习惯，添加一个开始打卡吧</p></div>";return}
-var html="";
+var S="kc",W=["日","一","二","三","四","五","六"];
+function fx(n){return(n+"").padStart(2,"0")}function td(){var d=new Date();return d.getFullYear()+"-"+fx(d.getMonth()+1)+"-"+fx(d.getDate())}
+function dk(d){return d.getFullYear()+"-"+fx(d.getMonth()+1)+"-"+fx(d.getDate())}
+function ld(){try{var r=localStorage.getItem(S);if(!r)return{h:[],r:{}};var d=JSON.parse(r);if(!d.h)d.h=[];if(!d.r)d.r={};return d}catch(e){return{h:[],r:{}}}}
+function sv(d){try{localStorage.setItem(S,JSON.stringify(d))}catch(e){}}
+var g=ld()
+function dn(r,h,k){var d=r[k]||{},c=0;for(var i=0;i<h.length;i++){if(d[h[i].id])c++}return c}
+function sk(r,h){if(h.length===0)return 0;var tk=td();if(dn(r,h,tk)<h.length)return 0;var s=1;for(var i=1;i<366;i++){var p=new Date();p.setDate(p.getDate()-i);if(dn(r,h,dk(p))===h.length)s++;else break}return s}
+function em(n){n=n||"";if(n.indexOf("数")>=0||n.indexOf("高")>=0)return"📐";if(n.indexOf("英")>=0||n.indexOf("单")>=0)return"📝";if(n.indexOf("政")>=0)return"🏛";if(n.indexOf("专")>=0||n.indexOf("据")>=0)return"⚙";if(n.indexOf("代")>=0||n.indexOf("编")>=0)return"💻";if(n.indexOf("阅")>=0||n.indexOf("读")>=0)return"📚";if(n.indexOf("真")>=0)return"📋";return"📖"}
+function $(id){return document.getElementById(id)}
+function r0(){
+var d=new Date();$("dt").textContent=d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日 星期"+W[d.getDay()]
+var tk=td(),h=g.h,t=h.length,dd=dn(g.r,g.h,tk),cp=2*Math.PI*26
+$("rg").setAttribute("stroke-dasharray",(t>0?dd/t*cp:0)+" "+cp)
+$("ct").textContent=dd+"/"+t
+if(t===0){$("tt").textContent="添加你的考研习惯吧✨";$("de").textContent="点击下方添加"}
+else if(dd===t){$("tt").textContent="🎉今日全部完成";$("de").textContent="太棒了，坚持就是胜利！"}
+else{$("tt").textContent="今日完成 "+dd+"/"+t;$("de").textContent=dd===0?"开始今天的打卡吧💪":"还差 "+(t-dd)+"项，加油！"}
+var s=sk(g.r,g.h);$("sk").textContent=s>0?"🔥连续 "+s+"天":"💪今天就开始坚持吧"
+var ls=$("ls")
+if(h.length===0){ls.innerHTML="<div class=em><div class=be>📝</div><p>还没有习惯，添加一个开始打卡吧</p></div>";return}
+var m=""
 for(var i=0;i<h.length;i++){
-var x=h[i],ch=!!(data.r[tk]||{})[x.id],hs=0,td3=new Date();
-for(var j=0;j<366;j++){var c=new Date(td3);c.setDate(c.getDate()-j);if((data.r[dk(c)]||{})[x.id])hs++;else break}
-var badge=hs>1?"<span style=font-size:.72rem;color:var(--green);background:#e8f0ea;padding:0 8px;border-radius:10px>\ud83d\udd25"+hs+"天</span>":(hs===1?"<span style=font-size:.72rem;color:var(--green);background:#e8f0ea;padding:0 8px;border-radius:10px>新打卡</span>":"");
-html+="<div class=it><input class=cb type=checkbox id=c"+x.id+"\""+(ch?" checked":"")+"><label class=bx for=c"+x.id+">"+(ch?"\u2713":"")+"</label><label class=nm for=c"+x.id+"><span>"+(x.emoji||"\ud83d\udcd6")+"</span> "+x.name+" "+badge+"</label><button class=dl data-id=\""+x.id+"\">\u2715</button></div>"
+var x=h[i],ck=!!((g.r[tk]||{})[x.id]),hs=0
+for(var j=0;j<366;j++){var cc=new Date();cc.setDate(cc.getDate()-j);if((g.r[dk(cc)]||{})[x.id])hs++;else break}
+var bd=hs>1?"<span style=font-size:.72rem;color:var(--g);background:#e8f0ea;padding:0 8px;border-radius:10px>🔥"+hs+"天</span>":(hs===1?"<span style=font-size:.72rem;color:var(--g);background:#e8f0ea;padding:0 8px;border-radius:10px>新打卡</span>":"")
+m+="<div class=it><input class=h type=checkbox id=c"+x.id+""+(ck?" checked":"")+"><label class=x for=c"+x.id+">"+(ck?"✓":"")+"</label><label class=nm for=c"+x.id+">"+(x.e||"📖")+" "+x.n+" "+bd+"</label><button class=dl data-i="+x.id+">✕</button></div>"
 }
-lst.innerHTML=html;
-lst.querySelectorAll(".cb").forEach(function(cb){cb.addEventListener("change",function(){var id=this.id.replace("c",""),tk2=td();if(!data.r[tk2])data.r[tk2]={};if(data.r[tk2][id])delete data.r[tk2][id];else data.r[tk2][id]=true;sv(data);r()})})
-lst.querySelectorAll(".dl").forEach(function(btn){btn.addEventListener("click",function(){if(!confirm("确定要删除吗？记录也会被清除。"))return;var id=this.dataset.id;data.h=data.h.filter(function(h){return h.id!==id});for(var k in data.r){delete data.r[k][id];if(Object.keys(data.r[k]).length===0)delete data.r[k]}sv(data);r()})})
+ls.innerHTML=m
+var cbs=ls.querySelectorAll(".h");for(var i=0;i<cbs.length;i++){(function(cb){cb.onchange=function(){var id=cb.id.slice(1);if(!g.r[td()])g.r[td()]={};if(g.r[td()][id])delete g.r[td()][id];else g.r[td()][id]=true;sv(g);r()}})(cbs[i])}
+var dls=ls.querySelectorAll(".dl");for(var i=0;i<dls.length;i++){(function(dl){dl.onclick=function(){if(!confirm("确定删除吗？"))return;var id=dl.getAttribute("data-i");g.h=g.h.filter(function(x){return x.id!==id});for(var k in g.r){delete g.r[k][id];if(Object.keys(g.r[k]).length===0)delete g.r[k]}sv(g);r()}})(dls[i])}
 }
-function rw(){var d=l7(),t=data.h.length,g=document.getElementById("wg");if(t===0){g.innerHTML="<div class=em><div class=be>\ud83d\udcca</div><p>添加习惯后显示</p></div>";return}var h="";for(var i=0;i<d.length;i++){var y=d[i],k=dk(y),n=gn(data.r,data.h,k),r=n/t,isT=k===td();h+="<div class=wd"+(isT?" t":"")+"><div class=wn>"+W[y.getDay()]+"</div><div class=wd>"+(y.getMonth()+1)+"/"+y.getDate()+"</div><div class=wb><div class=wf style=width:"+(r*100)+"%></div></div><div class=wc>"+n+"/"+t+"</div></div>"}g.innerHTML=h}
-var mo=0;function rm(){var n=new Date(),t=new Date(n.getFullYear(),n.getMonth()+mo,1),y=t.getFullYear(),m=t.getMonth();document.getElementById("mt").textContent=y+"年"+(m+1)+"月";var f=new Date(y,m,1).getDay(),d=new Date(y,m+1,0).getDate(),tl=data.h.length;var h="<div class=cl>日</div><div class=cl>一</div><div class=cl>二</div><div class=cl>三</div><div class=cl>四</div><div class=cl>五</div><div class=cl>六</div>";for(var i=0;i<f;i++)h+="<div class=cd></div>";var tk=td();for(var i=1;i<=d;i++){var k=y+"-"+((m+1)+"").padStart(2,"0")+"-"+(i+"").padStart(2,"0"),dd=gn(data.r,data.h,k),isT=k===tk;h+="<div class=cd"+(isT?" t":"")+">"+i+(dd>0?"<div class=cc>"+dd+"/"+tl+"</div>":"")+"</div>"}document.getElementById("cal").innerHTML=h}
-document.getElementById("mp").onclick=function(){mo--;rm()};document.getElementById("mn").onclick=function(){mo++;rm()}
-var yo=0;function ry(){var n=new Date(),y=n.getFullYear()+yo;document.getElementById("yt").textContent=y+"年";var ms="1月,2月,3月,4月,5月,6月,7月,8月,9月,10月,11月,12月".split(",");document.getElementById("hl").innerHTML=ms.map(function(m,i){return"<span style=grid-column:"+Math.floor(i*53/12+1)+">"+m+"</span>"}).join("");var st=new Date(y,0,1),en=new Date(y,11,31),td2=Math.ceil((en-st)/86400000)+1,sw=st.getDay(),th=data.h.length;var c="",cd=0,tc=0,pd=0,bs=0,cs=0;for(var i=0;i<sw;i++)c+="<div class=hc style=background:transparent></div>";for(var d=0;d<td2;d++){var d2=new Date(st);d2.setDate(d2.getDate()+d);var k=dk(d2),dd=gn(data.r,data.h,k);tc+=dd;var lv=0;if(th>0){if(dd===th)lv=4;else if(dd/th>=.75)lv=3;else if(dd/th>=.5)lv=2;else if(dd>0)lv=1}if(dd>0)cd++;if(th>0&&dd===th){pd++;cs++;if(cs>bs)bs=cs}else cs=0;c+="<div class=hc l"+lv+"></div>"}document.getElementById("hm").innerHTML=c;document.getElementById("hs").innerHTML="<span>\ud83d\udcc5打卡 <strong>"+cd+"</strong> 天</span><span>\u2705完成 <strong>"+tc+"</strong> 项</span><span>\ud83c\udfaf全勤 <strong>"+pd+"</strong> 天</span><span>\ud83c\udfc6最长连续 <strong>"+bs+"</strong> 天</span>"}
-document.getElementById("yp").onclick=function(){yo--;ry()};document.getElementById("yn").onclick=function(){yo++;ry()}
-document.querySelectorAll(".tab").forEach(function(t){t.addEventListener("click",function(){document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("active")});this.classList.add("active");document.querySelectorAll(".pn").forEach(function(x){x.classList.remove("s")});document.getElementById("p"+this.dataset.p).classList.add("s")})})
-document.getElementById("addBtn").onclick=function(){var ip=document.getElementById("inp"),nm=ip.value.trim();if(!nm){alert("请输入习惯名称");return}if(nm.length>30){alert("最长30个字");return}for(var i=0;i<data.h.length;i++){if(data.h[i].name===nm){alert("已存在");return}}var id=Date.now().toString(36)+Math.random().toString(36).slice(2,5);data.h.push({id:id,name:nm,"emoji":em(nm)});sv(data);ip.value="";r()}
-document.getElementById("inp").onkeydown=function(e){if(e.key==="Enter"){document.getElementById("addBtn").click()}}
-function r(){rt();rw();rm();ry()}
+function r1(){var da=[],t=g.h.length;for(var i=6;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);da.push(d)}var wg=$("wg");if(t===0){wg.innerHTML="<div class=em><div class=be>📊</div><p>添加习惯后显示</p></div>";return}var m="";for(var i=0;i<da.length;i++){var d=da[i],k=dk(d),dd=dn(g.r,g.h,k),rt=dd/t,isT=k===td();m+="<div class=wd"+(isT?" t":"")+"><div class=wn>"+W[d.getDay()]+"</div><div class=wd2>"+(d.getMonth()+1)+"/"+d.getDate()+"</div><div class=wb><div class=wf style=width:"+(rt*100)+"%></div></div><div class=wc>"+dd+"/"+t+"</div></div>"}wg.innerHTML=m}
+var mo=0;function r2(){var n=new Date(),t=new Date(n.getFullYear(),n.getMonth()+mo,1),y=t.getFullYear(),m=t.getMonth();$("mt").textContent=y+"年"+(m+1)+"月";var f=new Date(y,m,1).getDay(),d=new Date(y,m+1,0).getDate(),tl=g.h.length;var h="<div class=cl>日</div><div class=cl>一</div><div class=cl>二</div><div class=cl>三</div><div class=cl>四</div><div class=cl>五</div><div class=cl>六</div>";for(var i=0;i<f;i++)h+="<div class=cd></div>";var tk=td();for(var i=1;i<=d;i++){var k=y+"-"+fx(m+1)+"-"+fx(i),dd=dn(g.r,g.h,k),isT=k===tk;h+="<div class=cd"+(isT?" t":"")+">"+i+(dd>0?"<div class=cc>"+dd+"/"+tl+"</div>":"")+"</div>"}$("ca").innerHTML=h}
+$("mp").onclick=function(){mo--;r2()};$("mn").onclick=function(){mo++;r2()}
+var yo=0;function r3(){var n=new Date(),y=n.getFullYear()+yo;$("yt").textContent=y+"年";var ms="1月,2月,3月,4月,5月,6月,7月,8月,9月,10月,11月,12月".split(",");$("hl").innerHTML=ms.map(function(m,i){return"<span style=grid-column:"+Math.floor(i*53/12+1)+">"+m+"</span>"}).join("");var st=new Date(y,0,1),en=new Date(y,11,31),td2=Math.ceil((en-st)/86400000)+1,sw=st.getDay(),th=g.h.length;var c="",cd=0,tc=0,pd=0,bs=0,cs=0;for(var i=0;i<sw;i++)c+="<div class=hc style=background:transparent></div>";for(var d=0;d<td2;d++){var d2=new Date(st);d2.setDate(d2.getDate()+d);var k=dk(d2),dd=dn(g.r,g.h,k);tc+=dd;var lv=0;if(th>0){if(dd===th)lv=4;else if(dd/th>=.75)lv=3;else if(dd/th>=.5)lv=2;else if(dd>0)lv=1}if(dd>0)cd++;if(th>0&&dd===th){pd++;cs++;if(cs>bs)bs=cs}else cs=0;c+="<div class=hc l"+lv+"></div>"}$("hm").innerHTML=c;$("hs").innerHTML="<span>📅打卡 <strong>"+cd+"</strong>天</span><span>✅完成 <strong>"+tc+"</strong>项</span><span>🎯全勤 <strong>"+pd+"</strong>天</span><span>🏆最长连续 <strong>"+bs+"</strong>天</span>"}
+$("yp").onclick=function(){yo--;r3()};$("yn").onclick=function(){yo++;r3()}
+var ts=[$("t0"),$("t1"),$("t2"),$("t3")],ps=[$("p0"),$("p1"),$("p2"),$("p3")]
+for(var i=0;i<ts.length;i++){(function(idx){ts[idx].onclick=function(){for(var j=0;j<ts.length;j++){ts[j].className="tb";ps[j].className="pn"}ts[idx].className="tb a";ps[idx].className="pn s"}})(i)}
+$("ab").onclick=function(){var ip=$("in"),nm=ip.value.trim();if(!nm){alert("请输入习惯名称");return}if(nm.length>30){alert("最长30个字");return}for(var i=0;i<g.h.length;i++){if(g.h[i].n===nm){alert("已存在");return}}var id=Date.now().toString(36)+Math.random().toString(36).slice(2,5);g.h.push({id:id,n:nm,e:em(nm)});sv(g);ip.value="";r()}
+$("in").onkeydown=function(e){if(e.key==="Enter")$("ab").click()}
+function r(){r0();r1();r2();r3()}
 r()
-\nif(navigator.serviceWorker){navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(r){r.unregister()})})}</script></body></html>
+if(navigator.serviceWorker){navigator.serviceWorker.getRegistrations().then(function(a){for(var i=0;i<a.length;i++){a[i].unregister()}}).catch(function(){})}
+</script></body></html>
