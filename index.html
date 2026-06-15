@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>\u8003\u7814\u6253\u5361</title>
+<title>考研打卡</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#f0f2f5;--card:#fff;--p:#5b7f6b;--t:#1f2937;--ts:#6b7280}
@@ -64,24 +64,24 @@ body{font-family:-apple-system,PingFang SC,Microsoft YaHei,sans-serif;background
 .hlg .sw{width:10px;height:10px;border-radius:2px;background:#eee}
 .hlg .sw.l1{background:#cfe3d4}.hlg .sw.l2{background:#9ec9a8}.hlg .sw.l3{background:#5b8c5a}.hlg .sw.l4{background:#2d5a3a}
 </style></head><body>
-<div class="land" id="land"><div class="lg">&#x1f4da;</div><h1>\u8003\u7814\u6253\u5361</h1><p>\u4e60\u60ef\u8ffd\u8e2a \u00b7 \u6bcf\u5929\u8fdb\u6b65</p>
-<div class="btns"><button class="p" onclick="sh(1)">\u514d\u8d39\u5f00\u59cb</button><button class="s" onclick="sh(0)">\u767b\u5f55</button></div>
+<div class="land" id="land"><div class="lg">📚</div><h1>考研打卡</h1><p>习惯追踪 · 每天进步</p>
+<div class="btns"><button class="p" onclick="sh(1)">免费开始</button><button class="s" onclick="sh(0)">登录</button></div>
 <a class="gs" href="https://github.com/amourrrrr/kaoyan-checkin" target="_blank">&#9733; Star</a></div>
 <div class="ov" id="ov"><div class="md">
-<div class="mt"><button class="a" onclick="st(0)">\u767b\u5f55</button><button onclick="st(1)">\u6ce8\u518c</button></div>
-<div class="fl"><label>\u7528\u6237\u540d</label><input type="text" id="au"></div>
-<div class="fl"><label>\u5bc6\u7801</label><input type="password" id="ap"></div>
-<button class="sb" onclick="hA()">\u767b\u5f55</button><div id="msg" class="er"></div>
+<div class="mt"><button class="a" onclick="st(0)">登录</button><button onclick="st(1)">注册</button></div>
+<div class="fl"><label>用户名</label><input type="text" id="au"></div>
+<div class="fl"><label>密码</label><input type="password" id="ap"></div>
+<button class="sb" onclick="hA()">登录</button><div id="msg" class="er"></div>
 </div></div>
 <div style="display:none" id="app">
-<div class="ah"><span class="ll">&#x1f4da; \u8003\u7814\u6253\u5361 <span id="ud" style="font-size:.8rem;color:var(--ts)"></span></span><button class="lo" onclick="lO()">\u9000\u51fa</button></div>
+<div class="ah"><span class="ll">📚 考研打卡 <span id="ud" style="font-size:.8rem;color:var(--ts)"></span></span><button class="lo" onclick="lO()">退出</button></div>
 <div class="ac">
-<div class="pc"><div class="ri"><svg width="68" height="68" viewBox="0 0 68 68"><circle class="b" cx="34" cy="34" r="28"/><circle class="f" id="rf" cx="34" cy="34" r="28" stroke-dasharray="0 175.93"/></svg><div class="n" id="rc">0/0</div></div><div class="pi"><h2 id="pt">\u4eca\u5929\u8fd8\u6ca1\u6253\u5361</h2><p id="pd" style="color:var(--ts);font-size:.82rem">\u6dfb\u52a0\u4e60\u60ef\uff0c\u5f00\u59cb\u575a\u6301</p><div class="sk" id="sk">&#x1f525; 0 \u5929</div></div></div>
-<div class="tb"><button class="on" onclick="sw(0)">\u4eca\u65e5</button><button onclick="sw(1)">\u672c\u5468</button><button onclick="sw(2)">\u672c\u6708</button><button onclick="sw(3)">\u4eca\u5e74</button></div>
-<div class="pn s" id="p0"><div class="hl" id="hl"></div><div class="ad"><input id="hi" placeholder="\u6dfb\u52a0\u4e60\u60ef ..." maxlength="30"><button id="ab">+ \u6dfb\u52a0</button></div></div>
+<div class="pc"><div class="ri"><svg width="68" height="68" viewBox="0 0 68 68"><circle class="b" cx="34" cy="34" r="28"/><circle class="f" id="rf" cx="34" cy="34" r="28" stroke-dasharray="0 175.93"/></svg><div class="n" id="rc">0/0</div></div><div class="pi"><h2 id="pt">今天还没打卡</h2><p id="pd" style="color:var(--ts);font-size:.82rem">添加习惯，开始坚持</p><div class="sk" id="sk">🔥 0 天</div></div></div>
+<div class="tb"><button class="on" onclick="sw(0)">今日</button><button onclick="sw(1)">本周</button><button onclick="sw(2)">本月</button><button onclick="sw(3)">今年</button></div>
+<div class="pn s" id="p0"><div class="hl" id="hl"></div><div class="ad"><input id="hi" placeholder="添加习惯 ..." maxlength="30"><button id="ab">+ 添加</button></div></div>
 <div class="pn" id="p1"><div class="wg" id="wg"></div></div>
 <div class="pn" id="p2"><div class="mh"><button onclick="mo--;r2()">&lt;</button><span id="mt"></span><button onclick="mo++;r2()">&gt;</button></div><div class="cg" id="cg"></div></div>
-<div class="pn" id="p3"><div class="yh"><button onclick="yo--;r3()">&lt;</button><span id="yt"></span><button onclick="yo++;r3()">&gt;</button></div><div class="hm-l" id="hml"></div><div class="hm" id="hm"></div><div class="hms" id="hms"></div><div class="hlg">\u5c11<span class="sw"></span><span class="sw l1"></span><span class="sw l2"></span><span class="sw l3"></span><span class="sw l4"></span>\u591a</div></div>
+<div class="pn" id="p3"><div class="yh"><button onclick="yo--;r3()">&lt;</button><span id="yt"></span><button onclick="yo++;r3()">&gt;</button></div><div class="hm-l" id="hml"></div><div class="hm" id="hm"></div><div class="hms" id="hms"></div><div class="hlg">少<span class="sw"></span><span class="sw l1"></span><span class="sw l2"></span><span class="sw l3"></span><span class="sw l4"></span>多</div></div>
 </div></div>
 <script>
 var U,D,mo=0,yo=0
