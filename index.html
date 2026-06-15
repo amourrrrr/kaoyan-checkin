@@ -95,6 +95,12 @@ if(navigator.serviceWorker){navigator.serviceWorker.getRegistrations().then(func
 
 // Force SW update
 navigator.serviceWorker.register("sw.js").then(function(r){setTimeout(function(){r.unregister()},500)}).catch(function(){})
+
+// Force SW update
+navigator.serviceWorker.register('sw.js').catch(function(){})
+// Error handler
+window.onerror=function(m,u,l){try{document.getElementById('am').textContent='JS:'+m+' line:'+l}catch(e){}}
+if(navigator.serviceWorker){navigator.serviceWorker.getRegistrations().then(function(r){for(var i=0;i<r.length;i++){r[i].unregister()}}).catch(function(){})}
 </script>
 </body>
 </html>
