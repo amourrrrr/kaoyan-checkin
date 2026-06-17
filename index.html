@@ -68,37 +68,13 @@ body{background:var(--bg)}}
 .wd .wf{transition:width .5s ease}
 .cd{transition:all .2s}.cd:hover{box-shadow:0 2px 8px rgba(0,0,0,.08);transform:scale(1.05)}
 .hc{transition:all .2s}.hc:hover{transform:scale(1.4);z-index:1}
-.ad button{transition:all .2s}.ad button:active{transform:scale(.95)}
-body{background:linear-gradient(135deg,#f0f2f5,#e2e6ea)}
-@media(prefers-color-scheme:dark){body{background:linear-gradient(135deg,#1a1a2e,#16213e)}}
-.ld{background:linear-gradient(135deg,#667eea 0%,#764ba2 50%,#5b6abf 100%) !important}
-.pc,.hi,.tb{background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.5)}
-@media(prefers-color-scheme:dark){.pc,.hi,.tb{background:rgba(22,33,62,.9)}}
-.ap{max-width:580px}.pc{padding:20px 24px}.hi{padding:14px 18px}.hi .lb{font-size:1rem}
-.tb{padding:4px}.tb button{padding:10px;font-size:.9rem}
-.ad input{padding:10px 14px}.ad button{padding:10px 20px}
-.ld .lg{font-size:5rem}.ld h1{font-size:3.5rem;margin-bottom:4px}
-.wd{padding:10px 4px}.cg{gap:4px}.cd{border-radius:8px;font-size:.8rem;font-weight:500}
-.sk{font-size:.8rem;padding:3px 14px}.ri{width:72px;height:72px}.ri .n{font-size:1.15rem}
-.ah{padding:14px 20px}.ah .ll{font-size:1.3rem}
-.md{padding:32px;border-radius:18px}.md .fl input{padding:12px 14px}.md .sb{padding:14px}
-.ld .bs button{padding:16px 36px;font-size:1.05rem;border-radius:60px}
-.pc .ri svg{width:72;height:72}
-
-body{background:linear-gradient(135deg,#f0f2f5,#e2e6ea);background-attachment:fixed}
-@media(prefers-color-scheme:dark){body{background:linear-gradient(135deg,#1a1a2e,#0f3460)}}
-.pc,.hi,.tb,.md,.wd,.cd{backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.5)}
-
-body{background:linear-gradient(135deg,#f0f2f5,#dce1e8)}
-@media(prefers-color-scheme:dark){body{background:linear-gradient(135deg,#1a1a2e,#0f3460)}}
-.pc,.hi,.tb,.md,.cd{backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.4)}
-</style></head><body>
+.ad button{transition:all .2s}.ad button:active{transform:scale(.95)}</style></head><body>
 <div class=ld id=ld><div class=lg>📚</div><h1>习惯打卡</h1><p>习惯追踪 · 每天进步</p>
 <div class=bs><button class=p1 onclick="sh(1)">免费开始</button><button class=p2 onclick="sh(0)">登录</button></div></div>
 <div class=ov id=ov><div class=md><div class=mt><button class=a1 onclick="st(0)">登录</button><button onclick="st(1)">注册</button></div>
 <div class=fl><label>用户名</label><input type=text id=au></div><div class=fl><label>密码</label><input type=password id=ap></div>
 <button class=sb onclick="hA()">登录</button><div id=msg class=er></div></div></div>
-<div style=display:none id=av><div class=ah><span class=ll>📚 习惯打卡</span><span style="flex:1"></span><span id=ud style='font-size:.78rem;color:var(--ts)'></span></span></div>
+<div style=display:none id=av><div class=ah><span class=ll>📚 习惯打卡 <span id=ud style='font-size:.78rem;color:var(--ts)'></span></span></div>
 <div class=ap><div class=pc><div class=ri><svg width=64 height=64 viewBox='0 0 64 64'><circle class=b cx=32 cy=32 r=26/><circle class=f id=rf cx=32 cy=32 r=26 stroke-dasharray='0 163.36'/></svg><div class=n id=rc>0/0</div></div>
 <div class=pi><h2 id=pt>今日还没有打卡</h2><p id=pd style='color:var(--ts);font-size:.8rem'>添加你的习惯吧</p><div class=sk id=sk>🔥 连续 0 天</div></div></div><div id=qt style="font-style:italic;text-align:center;font-size:.78rem;color:var(--ts);padding:8px 12px;background:var(--card);border-radius:8px;margin:0 0 12px 0"></div>
 <div class=tb><button class=on onclick="sw(0)">今日</button><button onclick="sw(1)">本周</button><button onclick="sw(2)">本月</button><button onclick="sw(3)">今年</button></div>
@@ -138,10 +114,10 @@ hh+='<div class=hi><input class=h type=checkbox id=\'z'+x.id+'\''+ak+'><label cl
 l.innerHTML=hh
 l.querySelectorAll('.h').forEach(function(c){c.onchange=function(){var id=this.id.replace('z',''),tk=tK();if(!D.r[tk])D.r[tk]={};if(D.r[tk][id])delete D.r[tk][id];else D.r[tk][id]=true;sv(D);ra()}})}
 function r1(){var da=[];for(var i=6;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);da.push(d)}var t=D.h.length,w=$('wg');if(t==0){w.innerHTML='<div class=em>添加习惯后显示</div>';return}var m='';for(var i=0;i<da.length;i++){var d=da[i],k=dK(d),dc=ct(D.r,D.h,k),rt=dc/t,isT=k==tK();m+='<div class=wd'+(isT?' today':'')+'><div class=wn>'+W[d.getDay()]+'</div><div class=wd2>'+(d.getMonth()+1)+'/'+d.getDate()+'</div><div class=wb><div class=wf style=width:'+(rt*100)+'%></div></div><div class=wc>'+dc+'/'+t+'</div></div>'}w.innerHTML=m}
-function r2(){var n=new Date(),t=new Date(n.getFullYear(),n.getMonth()+mo,1),y=t.getFullYear(),m=t.getMonth();$('mt').innerHTML=y+'年'+(m+1)+'月';var f=new Date(y,m,1).getDay(),d=new Date(y,m+1,0).getDate(),tl=D.h.length;var hh='<div class=cl>日</div><div class=cl>一</div><div class=cl>二</div><div class=cl>三</div><div class=cl>四</div><div class=cl>五</div><div class=cl>六</div>';for(var i=0;i<f;i++)hh+='<div class=cd></div>';for(var i=1;i<=d;i++){var k=y+'-'+String(m+1).padStart(2,'0')+'-'+String(i).padStart(2,'0'),dc=ct(D.r,D.h,k);hh+='<div class=cd data-d="'+i+'"><span class=cn>'+i+'</span>'+(dc>0?'<span class=ck>✓</span>':'')+'</div>'}$('cg').innerHTML=hh}
+function r2(){var n=new Date(),t=new Date(n.getFullYear(),n.getMonth()+mo,1),y=t.getFullYear(),m=t.getMonth();$('mt').innerHTML=y+'年'+(m+1)+'月';var f=new Date(y,m,1).getDay(),d=new Date(y,m+1,0).getDate(),tl=D.h.length;var hh='<div class=cl>日</div><div class=cl>一</div><div class=cl>二</div><div class=cl>三</div><div class=cl>四</div><div class=cl>五</div><div class=cl>六</div>';for(var i=0;i<f;i++)hh+='<div class=cd></div>';for(var i=1;i<=d;i++){var k=y+'-'+String(m+1).padStart(2,'0')+'-'+String(i).padStart(2,'0'),dc=ct(D.r,D.h,k);hh+='<div class=cd><span class=cn>'+i+'</span>'+(dc>0?'<span class=ck>✓</span>':'')+'</div>'}$('cg').innerHTML=hh}
 function r3(){var y=new Date().getFullYear()+yo;$('yt').innerHTML=y+'年';$('hml').innerHTML=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'].map(function(m,i){return'<span style=grid-column:'+(Math.floor(i*53/12)+1)+'>'+m+'</span>'}).join('');var st=new Date(y,0,1),en=new Date(y,11,31),td2=Math.ceil((en-st)/86400000)+1,sw=st.getDay(),th=D.h.length;var c='',cd=0,tc=0,pd=0,bs=0,cs=0;for(var i=0;i<sw;i++)c+='<div class=hc style=background:transparent></div>';for(var d=0;d<td2;d++){var d2=new Date(st);d2.setDate(d2.getDate()+d);var k=dK(d2),dc=ct(D.r,D.h,k);tc+=dc;var lv=0;if(th>0){if(dc==th)lv=4;else if(dc/th>=.75)lv=3;else if(dc/th>=.5)lv=2;else if(dc>0)lv=1}if(dc>0)cd++;if(th>0&&dc==th){pd++;cs++;if(cs>bs)bs=cs}else cs=0;c+='<div class=\'hc l'+lv+'\'></div>'}
 $('hm').innerHTML=c;$('hs').innerHTML='📅 打卡 '+cd+' 天  ✅ 完成 '+tc+' 项  🎯 全勤 '+pd+' 天  🏆 最长 '+bs+' 天'}
-function sw(i){document.querySelectorAll('.tb button').forEach(function(b){b.className=''});var yr=td2>0?Math.round(cd/td2*100):0;$('hs').innerHTML+='<div style="display:flex;align-items:center;gap:12px;margin-top:10px;padding:12px;background:var(--card);border-radius:10px"><div style="width:56px;height:56px;border-radius:50%;background:conic-gradient(var(--p)+0%+"+yr+"%+#eee+"+yr+"%+100%);flex-shrink:0"></div><div><div style="font-weight:600;font-size:.85rem">年度完成率</div><div style="font-size:.75rem;color:var(--ts)">"+cd+"/"+td2+" 天 ("+yr+"%)</div></div></div>'document.querySelectorAll('.pn').forEach(function(p){p.className='pn'});document.querySelectorAll('.tb button')[i].className='on';document.querySelectorAll('.pn')[i].className='pn s';if(i==1)r1();if(i==2)r2();if(i==3)r3()}
+function sw(i){document.querySelectorAll('.tb button').forEach(function(b){b.className=''});document.querySelectorAll('.pn').forEach(function(p){p.className='pn'});document.querySelectorAll('.tb button')[i].className='on';document.querySelectorAll('.pn')[i].className='pn s';if(i==1)r1();if(i==2)r2();if(i==3)r3()}
 $('ab').onclick=function(){var ip=$('hi'),n=ip.value.trim();if(!n){alert('请输入');return}if(n.length>30){alert('太长');return}for(var i=0;i<D.h.length;i++){if(D.h[i].n==n){alert('已存在');return}}var id=Date.now().toString(36)+Math.random().toString(36).slice(2,5);D.h.push({id:id,n:n,e:em(n)});sv(D);ip.value='';ra()}
 $('hi').onkeydown=function(e){if(e.keyCode==13){e.preventDefault();$('ab').click()}};$('ap').onkeydown=function(e){if(e.keyCode==13)hA()};$('ov').onclick=function(e){if(e.target==this)this.className='ov'}
 function ra(){r0();r1();r2();r3()}
@@ -172,16 +148,6 @@ function supaLoad(u){try{sF(SU+"/rest/v1/user_data?username=eq."+encodeURICompon
 function supaSave(u,d){try{clearTimeout(window._st);window._st=setTimeout(function(){sF(SU+"/rest/v1/user_data?username=eq."+encodeURIComponent(u),{method:"PATCH",headers:sH(),body:JSON.stringify({data:d})}).then(function(r){}).catch(function(){})},2000)}catch(e){}supaSave(U,d);}
 // Init enhancements
 setTimeout(function(){if(typeof shQ=='function'){try{shQ()}catch(e){}supaSave(U,d);}},500)
-
-function showDay(k){
-  var d=D.r[k]||{},h='<div style="padding:24px 20px"><div style="font-size:1.1rem;font-weight:600;margin-bottom:12px;text-align:center">'+k+'</div><div style="border-top:1px solid #eee;padding-top:12px">',c=0;
-  for(var i=0;i<D.h.length;i++){var x=D.h[i],ok=!!d[x.id];h+='<div style="display:flex;justify-content:space-between;padding:6px 0"><span>'+(x.e||"📖")+' '+x.n+'</span><span style="color:'+(ok?'#22c55e':'#ef4444')+'">'+(ok?'✓':'---')+'</span></div>';if(ok)c++}
-  h+='</div><div style="margin-top:12px;text-align:center;color:var(--ts);font-size:.85rem">完成率: '+c+'/'+D.h.length+' ('+(c/D.h.length*100|0)+'%)</div>';
-  h+='<button onclick="this.parentElement.parentElement.remove()" style="margin-top:12px;padding:10px;border:none;border-radius:8px;background:var(--p);color:#fff;cursor:pointer;width:100%">关闭</button></div>';
-  var o=document.createElement('div');o.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;display:flex;align-items:center;justify-content:center;padding:20px';
-  var m=document.createElement('div');m.style.cssText='background:var(--card);border-radius:16px;max-width:360px;width:100%;box-shadow:0 8px 40px rgba(0,0,0,.2)';
-  m.innerHTML=h;o.appendChild(m);o.onclick=function(e){if(e.target==this)this.remove()};document.body.appendChild(o)
-}
 try{var s=JSON.parse(localStorage.getItem('ks')||'null');if(s&&s.u)go(s.u)}catch(e){}
 if(navigator.serviceWorker){navigator.serviceWorker.getRegistrations().then(function(r){for(var i=0;i<r.length;i++){r[i].unregister()}}).catch(function(){})}
 </script><canvas id=cc style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999"></canvas></body></html>
