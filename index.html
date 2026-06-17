@@ -70,6 +70,15 @@ body{font-family:-apple-system,PingFang SC,Microsoft YaHei,sans-serif;background
 <script>
 var U,D,mo=0,yo=0,at=0
 var $=function(x){return document.getElementById(x)}
+
+// ===== Supabase DB =====
+var SU="https://mmskoazokzbbwktvaebt.supabase.co",SK="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1tc2tvYXpva3piYndrdHZhZWJ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2OTY3OTUsImV4cCI6MjA5NzI3Mjc5NX0.bvF7PrJbIbt2m4AIqv_0mcKyc6oKzIXoK-rD2RE7Jyc"
+function SH(){return{apikey:SK,Authorization:'Bearer '+SK,'Content-Type':'application/json',Accept:'application/json','Prefer':'return=minimal'}}
+function SR(m,p,b){return fetch(SU+'/rest/v1/'+p,{method:m||'GET',headers:SH(),body:b?JSON.stringify(b):null})}
+function SReg(u,p){return SR('POST','users',{username:u,password_hash:p}).then(function(r){if(!r.ok)throw Error();return SR('POST','user_data',{username:u,data:{}})}).then(function(r){return r.ok})}
+function SLog(u){return SR('GET','users?username=eq.'+encodeURIComponent(u)+'&select=password_hash').then(function(r){return r.ok?r.json():[]})}
+function SLd(u){return SR('GET','user_data?username=eq.'+encodeURIComponent(u)+'&select=data').then(function(r){return r.ok?r.json():[]})}
+function SSv(u,d){return SR('PATCH','user_data?username=eq.'+encodeURIComponent(u),{data:d}).then(function(r){return r.ok})}
 var W=['日','一','二','三','四','五','六']
 // 登录/注册
 function st(i){at=i;document.querySelectorAll('.mt button').forEach(function(b,j){b.className=i==j?'a1':''});$('msg').innerHTML='';$('msg').className='er'}
@@ -85,7 +94,7 @@ var lt=localStorage.getItem('kt');if(lt)$('at').innerHTML=lt
 function tK(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function dK(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function ld(){try{var x=localStorage.getItem('kd_'+U);if(!x)return{h:[],r:{}};var d=JSON.parse(x);if(!d.h)d.h=[];if(!d.r)d.r={};return d}catch(e){return{h:[],r:{}}}}
-function sv(d){try{localStorage.setItem('kd_'+U,JSON.stringify(d))}catch(e){}}
+function sv(d){try{localStorage.setItem('kd_'+U,JSON.stringify(d))}catch(e){}}if(U){if(window._st)clearTimeout(window._st);window._st=setTimeout(function(){SSv(U,d).catch(function(){})},1500)}
 function ct(r,h,k){var d=r[k]||{},c=0;for(var i=0;i<h.length;i++){if(d[h[i].id])c++}return c}
 function sr(r,h){if(!h||!h.length)return 0;var tk=tK();if(ct(r,h,tk)<h.length)return 0;var s=1;for(var i=1;i<366;i++){var p=new Date();p.setDate(p.getDate()-i);if(ct(r,h,dK(p))==h.length)s++;else break}return s}
 function em(n){if(!n)n='';if(n.indexOf('数')>=0||n.indexOf('高')>=0)return'📐';if(n.indexOf('英')>=0||n.indexOf('单')>=0)return'📝';if(n.indexOf('政')>=0)return'🏛';if(n.indexOf('专')>=0||n.indexOf('据')>=0)return'⚙';if(n.indexOf('代')>=0||n.indexOf('编')>=0)return'💻';if(n.indexOf('阅')>=0||n.indexOf('读')>=0)return'📚';if(n.indexOf('真')>=0)return'📋';return'📖'}
@@ -122,7 +131,7 @@ function sw(i){try{document.querySelectorAll('.tb button').forEach(function(b){b
 $('ab').onclick=function(){try{var ip=$('hi'),n=ip.value.trim();if(!n){alert('请输入');return}if(n.length>30){alert('太长');return}for(var i=0;i<D.h.length;i++){if(D.h[i].n==n){alert('已存在');return}}var id=Date.now().toString(36)+Math.random().toString(36).slice(2,5);D.h.push({id:id,n:n,e:em(n)});sv(D);ip.value='';ra()}catch(e){alert('add:'+e.message)}}
 $('hi').onkeydown=function(e){if(e.keyCode==13){e.preventDefault();$('ab').click()}};$('ap').onkeydown=function(e){if(e.keyCode==13)hA()};$('ov').onclick=function(e){if(e.target==this)this.className='ov'}
 function ra(){r0();r1();r2();r3()}
-function go(u){U=u;D=ld();$('ld').style.display='none';$('av').style.display='block';$('ud').innerHTML='👤 '+u;ra()}
+function go(u){U=u;D=ld();SLd(u).then(function(a){if(a&&a[0]&&a[0].data){try{var cd=typeof a[0].data=="string"?JSON.parse(a[0].data):a[0].data;D.h=cd.habits||D.h;D.r=cd.records||D.r;localStorage.setItem('kd_'+U,JSON.stringify(D))}catch(e){}}}).catch(function(){});$('ld').style.display='none';$('av').style.display='block';$('ud').innerHTML='👤 '+u;ra()}
 function lO(){localStorage.removeItem('ks');U=null;D=null;$('av').style.display='none';$('ld').style.display='flex'}
 try{var s=JSON.parse(localStorage.getItem('ks')||'null');if(s&&s.u)go(s.u)}catch(e){}
 if(navigator.serviceWorker){navigator.serviceWorker.getRegistrations().then(function(r){for(var i=0;i<r.length;i++){r[i].unregister()}}).catch(function(){})}
