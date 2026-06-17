@@ -76,7 +76,7 @@ body{background:var(--bg)}}
 <button class=sb onclick="hA()">登录</button><div id=msg class=er></div></div></div>
 <div style=display:none id=av><div class=ah><span class=ll>📚 习惯打卡 <span id=ud style='font-size:.78rem;color:var(--ts)'></span></span></div>
 <div class=ap><div class=pc><div class=ri><svg width=64 height=64 viewBox='0 0 64 64'><circle class=b cx=32 cy=32 r=26/><circle class=f id=rf cx=32 cy=32 r=26 stroke-dasharray='0 163.36'/></svg><div class=n id=rc>0/0</div></div>
-<div class=pi><h2 id=pt>今日还没有打卡</h2><p id=pd style='color:var(--ts);font-size:.8rem'>添加你的习惯吧</p><div class=sk id=sk>🔥 连续 0 天</div></div></div>
+<div class=pi><h2 id=pt>今日还没有打卡</h2><p id=pd style='color:var(--ts);font-size:.8rem'>添加你的习惯吧</p><div class=sk id=sk>🔥 连续 0 天</div></div></div><div id=qt style="font-style:italic;text-align:center;font-size:.78rem;color:var(--ts);padding:8px 12px;background:var(--card);border-radius:8px;margin:0 0 12px 0"></div>
 <div class=tb><button class=on onclick="sw(0)">今日</button><button onclick="sw(1)">本周</button><button onclick="sw(2)">本月</button><button onclick="sw(3)">今年</button></div>
 <div class='pn s' id=p0><div class=hl id=hl></div><div class=ad><input id=hi placeholder='添加习惯 ...' maxlength=30><button id=ab>+ 添加</button></div></div>
 <div class=pn id=p1><div class=wg id=wg></div></div>
@@ -95,15 +95,15 @@ else{if(!us[u]){m.innerHTML='信息错误';m.className='er';setTimeout(function(
 function tK(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function dK(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function ld(){try{var x=localStorage.getItem('kd_'+U);if(!x)return{h:[],r:{}};var d=JSON.parse(x);if(!d.h)d.h=[];if(!d.r)d.r={};return d}catch(e){return{h:[],r:{}}}}
-function sv(d){try{localStorage.setItem('kd_'+U,JSON.stringify(d))}catch(e){}}
+function sv(d){try{localStorage.setItem('kd_'+U,JSON.stringify(d))}catch(e){}supaSave(U,d);}
 function ct(r,h,k){var d=r[k]||{},c=0;for(var i=0;i<h.length;i++){if(d[h[i].id])c++}return c}
 function sr(r,h){if(!h||!h.length)return 0;var tk=tK();if(ct(r,h,tk)<h.length)return 0;var s=1;for(var i=1;i<366;i++){var p=new Date();p.setDate(p.getDate()-i);if(ct(r,h,dK(p))==h.length)s++;else break}return s}
 function em(n){if(!n)n='';if(n.indexOf('数')>=0||n.indexOf('高')>=0)return'📐';if(n.indexOf('英')>=0||n.indexOf('单')>=0)return'📝';return'📖'}
 function r0(){var h=D.h,t=h.length,tk=tK(),dc=ct(D.r,h,tk),cp=2*Math.PI*26;$('rf').setAttribute('stroke-dasharray',(t>0?dc/t*cp:0)+' '+cp);$('rc').innerHTML=dc+'/'+t
 if(t==0){$('pt').innerHTML='添加你的习惯吧';$('pd').innerHTML='点击下方添加'}
-else if(dc==t){$('pt').innerHTML='全部完成！';$('pd').innerHTML='太棒了！'}
+else if(dc==t){$('pt').innerHTML='全部完成！';$('pd').innerHTML='太棒了！';cf()}
 else{$('pt').innerHTML='今日 '+dc+'/'+t;$('pd').innerHTML=dc?'还差 '+(t-dc)+' 项':'开始吧'}
-var sk=sr(D.r,h);$('sk').innerHTML=sk>0?'🔥 连续 '+sk+' 天':'💪 开始吧'
+var sk=sr(D.r,h);$('sk').innerHTML=sk>0?'🔥 连续 '+sk+' 天':'💪 开始吧';var sb=$('sk').parentNode;var ob=sb.querySelector('.bdg');if(ob)ob.remove();if(sk>0){var bd=document.createElement('div');bd.className='bdg';bd.style.cssText='display:flex;gap:4px;flex-wrap:wrap;margin-top:4px';bd.innerHTML=gB(sk);sb.appendChild(bd)}
 var l=$('hl');if(h.length==0){l.innerHTML='<div class=em>还没有习惯，点击下方添加</div>';return}
 var hh='',tk2=tK()
 for(var i=0;i<h.length;i++){var x=h[i],ch=!!((D.r[tk2]||{})[x.id]),hs=0
@@ -121,9 +121,33 @@ function sw(i){document.querySelectorAll('.tb button').forEach(function(b){b.cla
 $('ab').onclick=function(){var ip=$('hi'),n=ip.value.trim();if(!n){alert('请输入');return}if(n.length>30){alert('太长');return}for(var i=0;i<D.h.length;i++){if(D.h[i].n==n){alert('已存在');return}}var id=Date.now().toString(36)+Math.random().toString(36).slice(2,5);D.h.push({id:id,n:n,e:em(n)});sv(D);ip.value='';ra()}
 $('hi').onkeydown=function(e){if(e.keyCode==13){e.preventDefault();$('ab').click()}};$('ap').onkeydown=function(e){if(e.keyCode==13)hA()};$('ov').onclick=function(e){if(e.target==this)this.className='ov'}
 function ra(){r0();r1();r2();r3()}
-function go(u){U=u;D=ld();$('ld').style.display='none';$('av').style.display='block';$('ud').innerHTML='👤 '+u;ra()}
+function go(u){U=u;D=ld();$('ld').style.display='none';$('av').style.display='block';$('ud').innerHTML='👤 '+u;supaLoad(u);ra()}
 function lO(){localStorage.removeItem('ks');U=null;D=null;$('av').style.display='none';$('ld').style.display='flex'}
 function lt(){localStorage.removeItem('ks');U=null;D=null;$('av').style.display='none';$('ld').style.display='flex'}
+
+// ===== All Features =====
+var Q=["每一天都是新的开始，加油！","坚持就是胜利，你已经在进步了！","小习惯大改变，每天进步一点点","你比昨天更强大！","努力的人运气不会太差","一天一步，跑向更好的自己","坚持是最美丽的风景"]
+var QI=Math.floor(Math.random()*Q.length)
+function shQ(){try{var e=document.getElementById("qt");if(e&&Q.length){e.innerHTML='“'+Q[(QI++)%Q.length]+'”';setTimeout(shQ,8000)}}catch(e){}supaSave(U,d);}
+function gB(s){var b="";if(s>=30)b+='<span style="background:linear-gradient(135deg,#d97706,#f59e0b);padding:2px 10px;border-radius:12px;color:#fff;font-size:.68rem">🏆 30天</span> "'
+if(s>=21)b+='<span style="background:linear-gradient(135deg,#059669,#10b981);padding:2px 10px;border-radius:12px;color:#fff;font-size:.68rem">🌟 21天</span> "'
+if(s>=14)b+='<span style="background:linear-gradient(135deg,#8b5cf6,#6366f1);padding:2px 10px;border-radius:12px;color:#fff;font-size:.68rem">⭐ 14天</span> "'
+if(s>=7)b+='<span style="background:linear-gradient(135deg,#f97316,#dc2626);padding:2px 10px;border-radius:12px;color:#fff;font-size:.68rem">🔥 7天</span> "'
+if(s>=3)b+='<span style="background:linear-gradient(135deg,#059669,#10b981);padding:2px 10px;border-radius:12px;color:#fff;font-size:.68rem">💪 3天</span> "'
+return b}
+function cf(){try{var c=document.getElementById("cc");if(!c)return;c.width=window.innerWidth;c.height=window.innerHeight;var x=c.getContext("2d"),p=[],n=80;for(var i=0;i<n;i++){p.push({x:Math.random()*c.width,y:Math.random()*c.height-c.height,s:Math.random()*3+2,r:Math.random()*6+3,color:"hsl("+Math.random()*360+",80%,60%)",a:1})}
+function d(){x.clearRect(0,0,c.width,c.height);for(var i=0;i<p.length;i++){var pt=p[i];pt.y+=pt.s;pt.x+=Math.sin(pt.y/30)*.5;x.beginPath();x.arc(pt.x,pt.y,pt.r,0,Math.PI*2);x.fillStyle=pt.color;x.globalAlpha=pt.a;x.fill();if(pt.y>c.height+10){pt.y=-10;pt.x=Math.random()*c.width;pt.a-=.02;if(pt.a<=0)pt.a=1}}requestAnimationFrame(d)}d();setTimeout(function(){var t=setInterval(function(){for(var i=0;i<p.length;i++)p[i].a-=.02;if(p[0].a<=0){clearInterval(t);c.width=0}},50)},2000)}catch(e){}supaSave(U,d);}
+function tT(){try{var dt=document.documentElement.getAttribute("data-theme");var n=dt==="dark"?"":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("ktm",n)}catch(e){}supaSave(U,d);}
+var lt=localStorage.getItem("ktm");if(lt)document.documentElement.setAttribute("data-theme",lt)
+// ===== Supabase Cloud Sync =====
+var SU="https://mmskoazokzbbwktvaebt.supabase.co",SK="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1tc2tvYXpva3piYndrdHZhZWJ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2OTY3OTUsImV4cCI6MjA5NzI3Mjc5NX0.bvF7PrJbIbt2m4AIqv_0mcKyc6oKzIXoK-rD2RE7Jyc"
+function sH(){return{apikey:SK,Authorization:"Bearer "+SK,"Content-Type":"application/json","Accept":"application/json"}}
+function sF(u,t){return Promise.race([fetch(u,t),new Promise(function(_,r){setTimeout(function(){r(new Error("."))},5000)})])}
+function supaReg(u,p){try{sF(SU+"/rest/v1/users",{method:"POST",headers:sH(),body:JSON.stringify({username:u,password_hash:p})}).then(function(r){if(r.ok)return sF(SU+"/rest/v1/user_data",{method:"POST",headers:sH(),body:JSON.stringify({username:u,data:{habits:[],records:{}}})})}).catch(function(){})}catch(e){}supaSave(U,d);}
+function supaLoad(u){try{sF(SU+"/rest/v1/user_data?username=eq."+encodeURIComponent(u)+"&select=data",{headers:sH()}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(a){if(a&&a[0]&&a[0].data){try{var cd=typeof a[0].data=="string"?JSON.parse(a[0].data):a[0].data;if(cd&&cd.habits){D=cd;localStorage.setItem("kd_"+U,JSON.stringify(D));if(typeof ra=='function')ra()}else{}}catch(e2){}}}).catch(function(){})}catch(e){}supaSave(U,d);}
+function supaSave(u,d){try{clearTimeout(window._st);window._st=setTimeout(function(){sF(SU+"/rest/v1/user_data?username=eq."+encodeURIComponent(u),{method:"PATCH",headers:sH(),body:JSON.stringify({data:d})}).then(function(r){}).catch(function(){})},2000)}catch(e){}supaSave(U,d);}
+// Init enhancements
+setTimeout(function(){if(typeof shQ=='function'){try{shQ()}catch(e){}supaSave(U,d);}},500)
 try{var s=JSON.parse(localStorage.getItem('ks')||'null');if(s&&s.u)go(s.u)}catch(e){}
 if(navigator.serviceWorker){navigator.serviceWorker.getRegistrations().then(function(r){for(var i=0;i<r.length;i++){r[i].unregister()}}).catch(function(){})}
-</script></body></html>
+</script><canvas id=cc style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999"></canvas></body></html>
