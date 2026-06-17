@@ -48,7 +48,27 @@ body{font-family:-apple-system,PingFang SC,Microsoft YaHei,sans-serif;background
 .hs{display:flex;gap:8px;margin-top:6px;font-size:.72rem;color:var(--ts);flex-wrap:wrap}
 .hg{display:flex;align-items:center;gap:3px;font-size:.65rem;color:var(--ts);justify-content:flex-end;margin-top:3px}
 .hg .s{width:10px;height:10px;border-radius:2px;background:#eee}.hg .s.l1{background:#cfe3d4}.hg .s.l2{background:#9ec9a8}.hg .s.l3{background:#5b8c5a}.hg .s.l4{background:#2d5a3a}
-</style></head><body>
+
+/* ===== Enhanced ===== */
+@keyframes gb{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.ld{background:linear-gradient(135deg,#667eea,#764ba2,#5b6abf);background-size:200% 200%;animation:gb 15s ease infinite}
+@keyframes bi{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.ld .lg{animation:bi 2s ease infinite}
+@keyframes si{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-color-scheme:dark){
+:root{--bg:#1a1a2e;--card:#16213e;--t:#e0e0e0;--ts:#8899aa;--p:#7bc67e}
+body{background:var(--bg)}}
+.pc{transition:all .3s}.pc:hover{box-shadow:0 4px 20px rgba(0,0,0,.1);transform:translateY(-2px)}
+.hi{transition:all .2s;animation:si .3s both}.hi:hover{box-shadow:0 2px 10px rgba(0,0,0,.06);transform:translateY(-1px)}
+.hi .bx{transition:all .2s}.hi .bx:hover{border-color:var(--p);transform:scale(1.08)}
+.tb{box-shadow:0 1px 6px rgba(0,0,0,.06)}.tb button{transition:all .2s}.tb button:hover{color:var(--p);opacity:.8}
+.pn{animation:fi .3s ease}
+.wd{transition:all .2s}.wd:hover{box-shadow:0 2px 10px rgba(0,0,0,.06);transform:translateY(-2px)}
+.wd .wf{transition:width .5s ease}
+.cd{transition:all .2s}.cd:hover{box-shadow:0 2px 8px rgba(0,0,0,.08);transform:scale(1.05)}
+.hc{transition:all .2s}.hc:hover{transform:scale(1.4);z-index:1}
+.ad button{transition:all .2s}.ad button:active{transform:scale(.95)}</style></head><body>
 <div class=ld id=ld><div class=lg>📚</div><h1>习惯打卡</h1><p>习惯追踪 · 每天进步</p>
 <div class=bs><button class=p1 onclick="sh(1)">免费开始</button><button class=p2 onclick="sh(0)">登录</button></div></div>
 <div class=ov id=ov><div class=md><div class=mt><button class=a1 onclick="st(0)">登录</button><button onclick="st(1)">注册</button></div>
