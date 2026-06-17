@@ -68,13 +68,29 @@ body{background:var(--bg)}}
 .wd .wf{transition:width .5s ease}
 .cd{transition:all .2s}.cd:hover{box-shadow:0 2px 8px rgba(0,0,0,.08);transform:scale(1.05)}
 .hc{transition:all .2s}.hc:hover{transform:scale(1.4);z-index:1}
-.ad button{transition:all .2s}.ad button:active{transform:scale(.95)}</style></head><body>
+.ad button{transition:all .2s}.ad button:active{transform:scale(.95)}
+body{background:linear-gradient(135deg,#f0f2f5,#e2e6ea)}
+@media(prefers-color-scheme:dark){body{background:linear-gradient(135deg,#1a1a2e,#16213e)}}
+.ld{background:linear-gradient(135deg,#667eea 0%,#764ba2 50%,#5b6abf 100%) !important}
+.pc,.hi,.tb{background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.5)}
+@media(prefers-color-scheme:dark){.pc,.hi,.tb{background:rgba(22,33,62,.9)}}
+.ap{max-width:580px}.pc{padding:20px 24px}.hi{padding:14px 18px}.hi .lb{font-size:1rem}
+.tb{padding:4px}.tb button{padding:10px;font-size:.9rem}
+.ad input{padding:10px 14px}.ad button{padding:10px 20px}
+.ld .lg{font-size:5rem}.ld h1{font-size:3.5rem;margin-bottom:4px}
+.wd{padding:10px 4px}.cg{gap:4px}.cd{border-radius:8px;font-size:.8rem;font-weight:500}
+.sk{font-size:.8rem;padding:3px 14px}.ri{width:72px;height:72px}.ri .n{font-size:1.15rem}
+.ah{padding:14px 20px}.ah .ll{font-size:1.3rem}
+.md{padding:32px;border-radius:18px}.md .fl input{padding:12px 14px}.md .sb{padding:14px}
+.ld .bs button{padding:16px 36px;font-size:1.05rem;border-radius:60px}
+.pc .ri svg{width:72;height:72}
+</style></head><body>
 <div class=ld id=ld><div class=lg>📚</div><h1>习惯打卡</h1><p>习惯追踪 · 每天进步</p>
 <div class=bs><button class=p1 onclick="sh(1)">免费开始</button><button class=p2 onclick="sh(0)">登录</button></div></div>
 <div class=ov id=ov><div class=md><div class=mt><button class=a1 onclick="st(0)">登录</button><button onclick="st(1)">注册</button></div>
 <div class=fl><label>用户名</label><input type=text id=au></div><div class=fl><label>密码</label><input type=password id=ap></div>
 <button class=sb onclick="hA()">登录</button><div id=msg class=er></div></div></div>
-<div style=display:none id=av><div class=ah><span class=ll>📚 习惯打卡 <span id=ud style='font-size:.78rem;color:var(--ts)'></span></span></div>
+<div style=display:none id=av><div class=ah><span class=ll>📚 习惯打卡</span><span style="flex:1"></span><span id=ud style='font-size:.78rem;color:var(--ts)'></span></span></div>
 <div class=ap><div class=pc><div class=ri><svg width=64 height=64 viewBox='0 0 64 64'><circle class=b cx=32 cy=32 r=26/><circle class=f id=rf cx=32 cy=32 r=26 stroke-dasharray='0 163.36'/></svg><div class=n id=rc>0/0</div></div>
 <div class=pi><h2 id=pt>今日还没有打卡</h2><p id=pd style='color:var(--ts);font-size:.8rem'>添加你的习惯吧</p><div class=sk id=sk>🔥 连续 0 天</div></div></div><div id=qt style="font-style:italic;text-align:center;font-size:.78rem;color:var(--ts);padding:8px 12px;background:var(--card);border-radius:8px;margin:0 0 12px 0"></div>
 <div class=tb><button class=on onclick="sw(0)">今日</button><button onclick="sw(1)">本周</button><button onclick="sw(2)">本月</button><button onclick="sw(3)">今年</button></div>
