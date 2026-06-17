@@ -59,7 +59,7 @@ body{font-family:-apple-system,PingFang SC,Microsoft YaHei,sans-serif;background
 <div class=ov id=ov><div class=md><div class=mt><button class=a1 onclick="st(0)">登录</button><button onclick="st(1)">注册</button></div>
 <div class=fl><label>用户名</label><input type=text id=au></div><div class=fl><label>密码</label><input type=password id=ap></div>
 <button class=sb onclick="hA()">登录</button><div id=msg class=er></div></div></div>
-<div style=display:none id=av><div class=ah><span class=ll>📚 <span id=at style=cursor:pointer onclick=et() title='点击修改标题'>习惯打卡</span> <span id=ud style='font-size:.78rem;color:var(--ts)'></span></span><button class=lo onclick="lO()">退出</button></div>
+<div style=display:none id=av><div class=ah><span class=ll>📚 <span id=at style=cursor:pointer onclick=et() title='点击修改标题'>习惯打卡</span> <span id=ud style='font-size:.78rem;color:var(--ts)'></span></span><button class=lo onclick="tT()" title="切换主题">🌙</button><button class=lo onclick="lO()">退出</button></div>
 <div class=ap><div class=pc><div class=ri><svg width=64 height=64 viewBox='0 0 64 64'><circle class=b cx=32 cy=32 r=26/><circle class=f id=rf cx=32 cy=32 r=26 stroke-dasharray='0 163.36'/></svg><div class=n id=rc>0/0</div></div>
 <div class=pi><h2 id=pt>今日还没有打卡</h2><p id=pd style='color:var(--ts);font-size:.8rem'>添加你的习惯吧</p><div class=sk id=sk>🔥 连续 0 天</div></div></div>
 <div class=tb><button class=on onclick="sw(0)">今日</button><button onclick="sw(1)">本周</button><button onclick="sw(2)">本月</button><button onclick="sw(3)">今年</button></div>
@@ -68,6 +68,16 @@ body{font-family:-apple-system,PingFang SC,Microsoft YaHei,sans-serif;background
 <div class=pn id=p2><div class=mh><button onclick="mo--;r2()">‹</button><span id=mt></span><button onclick="mo++;r2()">›</button></div><div class=cg id=cg></div></div>
 <div class=pn id=p3><div class=yh><button onclick="yo--;r3()">‹</button><span id=yt></span><button onclick="yo++;r3()">›</button></div><div class=hml id=hml></div><div class=hm id=hm></div><div class=hs id=hs></div><div class=hg>少<span class=s></span><span class='s l1'></span><span class='s l2'></span><span class='s l3'></span><span class='s l4'></span>多</div></div></div></div>
 <script>
+// ===== Enhancements =====
+var Q=["每一天都是一个新的开始，加油！","坚持就是胜利，你已经在进步了！","小习惯大改变，每天进步一点点","你比昨天更强大了！","不要和别人比，和昨天的自己比","努力的人运气不会太差","一天一步，跑向更好的自己","坚持是最美丽的风景"]
+var QI=Math.floor(Math.random()*Q.length);
+function shQ(){var e=$('qt');if(e)e.innerHTML='“'+Q[(QI++)%Q.length]+'”';setTimeout(shQ,8000)}
+function gB(s){var b='';if(s>=30)b+='<span class=g>🏆 30天</span>';if(s>=21)b+='<span class=m>🌟 21天</span>';if(s>=14)b+='<span class=s>⭐ 14天</span>';if(s>=7)b+='<span class=f>🔥 7天</span>';if(s>=3)b+='<span class=g>💪 3天</span>';return b}
+function cf(){var c=$('cc');if(!c)return;var x=c.getContext('2d');c.width=window.innerWidth;c.height=window.innerHeight;var p=[],n=80;for(var i=0;i<n;i++){p.push({x:Math.random()*c.width,y:Math.random()*c.height-c.height,s:Math.random()*3+2,r:Math.random()*6+3,color:'hsl('+Math.random()*360+',80%,60%)',a:1})}function d(){x.clearRect(0,0,c.width,c.height);for(var i=0;i<p.length;i++){var pt=p[i];pt.y+=pt.s;pt.x+=Math.sin(pt.y/30)*.5;x.beginPath();x.arc(pt.x,pt.y,pt.r,0,Math.PI*2);x.fillStyle=pt.color;x.globalAlpha=pt.a;x.fill();if(pt.y>c.height+10){pt.y=-10;pt.x=Math.random()*c.width;pt.a-=0.02;if(pt.a<=0){pt.a=1}}}requestAnimationFrame(d)}d();setTimeout(function(){var t=setInterval(function(){for(var i=0;i<p.length;i++)p[i].a-=0.02;if(p[0].a<=0){clearInterval(t);c.width=0}},50)},2000)}
+shQ();
+function tT(){var dt=document.documentElement.getAttribute('data-theme');document.documentElement.setAttribute('data-theme',dt==='dark'?'':'dark');localStorage.setItem('ktm',document.documentElement.getAttribute('data-theme')||'light')}
+var lt=localStorage.getItem('ktm');if(lt)document.documentElement.setAttribute('data-theme',lt);
+
 var U,D,mo=0,yo=0,at=0
 var $=function(x){return document.getElementById(x)}
 
@@ -103,9 +113,9 @@ function r0(){try{
 var h=D.h,t=h.length,tk=tK(),dc=ct(D.r,h,tk),cp=2*Math.PI*26
 $('rf').setAttribute('stroke-dasharray',(t>0?dc/t*cp:0)+' '+cp);$('rc').innerHTML=dc+'/'+t
 if(t==0){$('pt').innerHTML='添加你的习惯吧';$('pd').innerHTML='点击下方添加'}
-else if(dc==t){$('pt').innerHTML='今日全部完成！';$('pd').innerHTML='太棒了，继续坚持！'}
+else if(dc==t){$('pt').innerHTML='🎉 今日全部完成！';$('pd').innerHTML='太棒了，继续坚持！';cf()}
 else{$('pt').innerHTML='今日 '+dc+'/'+t;$('pd').innerHTML=dc?'还差 '+(t-dc)+' 项':'开始今天的打卡吧'}
-var sk=sr(D.r,h);$('sk').innerHTML=sk>0?'🔥 连续 '+sk+' 天':'💪 今天就开始吧'
+var sk=sr(D.r,h);$('sk').innerHTML=sk>0?'🔥 连续 '+sk+' 天':'💪 今天就开始吧';var be=$('sk').parentNode;var ob=be.querySelector('.bdg');if(ob)ob.remove();if(sk>0){var bd=document.createElement('div');bd.className='bdg';bd.innerHTML=gB(sk);be.appendChild(bd)}
 var l=$('hl');if(h.length==0){l.innerHTML='<div class=em>还没有习惯，点击下方添加</div>';return}
 var hh='',tk2=tK()
 for(var i=0;i<h.length;i++){
@@ -135,4 +145,4 @@ function go(u){U=u;D=ld();SLd(u).then(function(a){if(a&&a[0]&&a[0].data){try{var
 function lO(){localStorage.removeItem('ks');U=null;D=null;$('av').style.display='none';$('ld').style.display='flex'}
 try{var s=JSON.parse(localStorage.getItem('ks')||'null');if(s&&s.u)go(s.u)}catch(e){}
 if(navigator.serviceWorker){navigator.serviceWorker.getRegistrations().then(function(r){for(var i=0;i<r.length;i++){r[i].unregister()}}).catch(function(){})}
-</script></body></html>
+</script><canvas id=cc></canvas></body></html>
